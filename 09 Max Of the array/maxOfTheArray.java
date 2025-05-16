@@ -1,4 +1,4 @@
-public class app {
+public class maxOfTheArray {
     public static int functionMax(int[] arr) {
         int max = Integer.MIN_VALUE;
 
