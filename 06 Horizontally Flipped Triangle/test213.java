@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class test {
+public class test213 {
 
     public static void main(String[] args) {
         System.out.print("Enter the size of the triangle: ");
