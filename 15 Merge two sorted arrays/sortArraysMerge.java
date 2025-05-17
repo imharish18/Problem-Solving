@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class app {
+public class sortArraysMerge {
 
     public static void main(String[] args) {
        int[] arr1 = {0,9,13,44,45};
