@@ -36,20 +36,18 @@ public class sortingO {
            if(nums[i]==0){
             i++;            
            }
-           else if(nums[j]==1){
+           if(nums[j]==1){
             j--;
            }
-           else if(nums[i]==1 && nums[j]==0){
-            swapp(nums, i, j);
-            i++;
-            j--;
+           if(i>=j){
+            break;
+           }
+           if(nums[i]==1 && nums[j]==0){
+            nums[i] = 0;
+            nums[j] = 1;
            }
         }
     }
-    public static void swapp(int[] arr, int i, int j){
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
+
    
 }
