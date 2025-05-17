@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class app {
+public class transposeMatrix {
 
     public static void main(String[] args) {
         int[][] arr = {{1,1,1},{2,3,2},{5,5,5}};
