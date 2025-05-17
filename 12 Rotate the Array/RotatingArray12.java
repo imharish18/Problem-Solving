@@ -1,4 +1,4 @@
-public class app {
+public class RotatingArray12 {
 
     public static void main(String[] args) {
         int[] arr = {10,20,30,40};
