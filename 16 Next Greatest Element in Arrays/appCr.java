@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class app {
+public class appCr {
 
     public static void main(String[] args) {
         int[] arr = {112,238,2431,32437,24,492,136,238,221};
