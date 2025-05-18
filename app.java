@@ -14,17 +14,30 @@ public class app {
     }
 
     public static void main(String[] args) {
-        int[][] arr = {
-            { 1,  2,  3,  4,  5},
-            { 6,  7,  8,  9, 10},
-            {11, 12, 13, 14, 15}
-        };
-        System.out.println("MY ORIGINAL ARRAY");
-        printMat(arr);
-        System.out.println("--------------------");
-        spiralOrder(arr);
+        List<List<Integer>> n = generate(7);
+        System.out.println(n);
 
     }
+
+    // Pascal with ArrayList;
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+        for(int i=0; i<numRows-1; i++){
+            List<Integer> l  = new ArrayList<>();
+            for(int j=0; j<=i; j++){
+                if(j==0 || j==i){
+                    l.add(1);
+                }else{
+                    l.add(ans.get(i-1).get(j)+ans.get(i-1).get(j-1));
+                }
+            }
+            ans.add(l);
+        }
+        return ans;
+    }
+
+
+
     // Spiral Form;
     public static void spiralOrder(int[][] arr) {
         int minR = 0, minC = 0, maxR = arr.length-1, maxC = arr[0].length-1;
@@ -74,8 +87,6 @@ public class app {
         }
         
     }
-
-
 
     // Transpose of the matrix;
     public static void transpose(int[][] arr) {
