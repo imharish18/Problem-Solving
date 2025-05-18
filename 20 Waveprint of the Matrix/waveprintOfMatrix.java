@@ -1,9 +1,7 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-public class app {
+public class waveprintOfMatrix {
         public static void printMat(int[][] arr){
         for(int[] e : arr){
         for(int j: e){
@@ -14,48 +12,13 @@ public class app {
     }
 
     public static void main(String[] args) {
-        int[][] arr = {
-            { 1,  2,  3,  4,  5},
-            { 6,  7,  8,  9, 10},
-            {11, 12, 13, 14, 15}
-        };
+        int[][] arr = {{1,1,1},{2,3,4},{5,9,1}};
         System.out.println("MY ORIGINAL ARRAY");
         printMat(arr);
         System.out.println("--------------------");
-        spiralOrder(arr);
-
+        wavePrint(arr);
     }
-    // Spiral Form;
-    public static void spiralOrder(int[][] arr) {
-        int minR = 0, minC = 0, maxR = arr.length-1, maxC = arr[0].length-1;
-        ArrayList<Integer> al = new ArrayList<>();
-        while(minR<=maxR && minC<=maxC){
-            for(int i = minC; i<=maxC; i++){ 
-                al.add(arr[minR][i]);
-            }
-            minR++;
-            if(minR>maxR || minC>maxC) break;
 
-            for(int i = minR; i<=maxR; i++){
-                al.add(arr[i][maxC]);
-            }
-            maxC--;
-            if(minR>maxR || minC>maxC) break;
-            
-            for(int i = maxC; i>=minC; i--){ 
-                al.add(arr[maxR][i]);
-            }
-            maxR--;
-            if(minR>maxR || minC>maxC) break;
-
-            for(int i = maxR; i>=minR; i--){ 
-                al.add(arr[i][minC]);
-            }
-            minC++;
-    }
-    System.out.println(al);
-
-    }
     // Waveprint Functoin
     public static void wavePrint(int[][] arr) {
         int m = arr.length;
@@ -64,11 +27,11 @@ public class app {
         for(int i=0; i<m; i++){
             if(i%2==0){
                 for(int j=0; j<n; j++){
-                    System.out.print(arr[j][i]+" ");
+                    System.out.print(arr[i][j]+" ");
                 }
             }else{
                     for(int j=n-1; j>=0; j--){
-                    System.out.print(arr[j][i]+" ");
+                    System.out.print(arr[i][j]+" ");
                 }
             }
         }
