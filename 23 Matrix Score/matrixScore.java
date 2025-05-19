@@ -1,5 +1,5 @@
 public class matrixScore {
-    public static int matrixScore(int[][] grid) {
+    public static int matrixScore2(int[][] grid) {
 
         for(int i=0; i<grid.length; i++){
             if(grid[i][0]==0){
