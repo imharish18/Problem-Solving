@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class threePointer {
 
     public static void main(String[] args) {

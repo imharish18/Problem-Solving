@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class sortArraysMerge {
 
     public static void main(String[] args) {

@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class appCr {
 
     public static void main(String[] args) {

@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.Scanner;
+
 
 public class waveprintOfMatrix {
         public static void printMat(int[][] arr){
