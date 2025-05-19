@@ -1,4 +1,5 @@
 public class bothMethod {
+@SuppressWarnings("unused")
 public static void setZeroesFX(int[][] arr) {
         int m=arr.length, n=arr[0].length;
         boolean rowFlag = false, colFlag = false;
