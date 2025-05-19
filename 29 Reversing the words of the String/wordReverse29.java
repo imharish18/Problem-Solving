@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-public class app { 
+public class wordReverse29 { 
     public static void reverseFX(StringBuilder sb, int i,int j){
         while(i<j){
             char temp = sb.charAt(i);
