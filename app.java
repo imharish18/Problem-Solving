@@ -1,40 +1,40 @@
 public class app {
-    public static int compress(char[] ar) {
-        int i = 0, j = 0, idx = 0, n = ar.length;
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+        System.out.println("Swapping "+nums[i]+" "+nums[j]);
+    }
+    public static void selectionSort(int[] arr){
+        int n = arr.length;
+        for(int i=0; i<n; i++){
 
-        while (j < n) {
-            if (ar[i] == ar[j]) {
-                j++;
-            } else {
-                int len = j - i;
-                ar[idx++] = ar[i]; // Add character
-
-                if (len > 1) {
-                    String countStr = Integer.toString(len);
-                    for (int k = 0; k < countStr.length(); k++) {
-                        ar[idx++] = countStr.charAt(k);
-                    }
+            int min=Integer.MAX_VALUE;
+            int minIdx=-1;
+            for(int j=i; j<n; j++){
+                if(min>arr[j]){ 
+                    min=arr[j];
+                    minIdx = j;
                 }
-
-                i = j;
             }
+            System.out.println("\nThe minimum value is at index: "+minIdx);
+            swap(arr, i, minIdx); 
+
         }
 
-        // Handle last group
-        int len = j - i;
-        ar[idx++] = ar[i];
-        if (len > 1) {
-            String countStr = Integer.toString(len);
-            for (int k = 0; k < countStr.length(); k++) {
-                ar[idx++] = countStr.charAt(k);
-            }
-        }
-
-        return idx;
     }
     public static void main(String[] args) {
-        char[] ar = {'a','a','a','a','a','a','a','b','b','b','b','b','c','c','d','d','d','d','d','d','d','d','d','d','d','d'};
-        compress(ar);
+        int[] ar = {10,-4,20,1,-6,8};
+        for(int e : ar){
+            System.out.print(e+" ");
+        }
+        selectionSort(ar);
+
+        System.out.println();
+
+        for(int e : ar){
+        System.out.print(e+" ");
+        }
     }   
 }
 
