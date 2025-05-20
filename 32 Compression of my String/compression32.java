@@ -1,4 +1,4 @@
-public class app {
+public class compression32 {
     public static int compress(char[] ar) {
         int i = 0, j = 0, idx = 0, n = ar.length;
 
@@ -37,4 +37,3 @@ public class app {
         compress(ar);
     }   
 }
-
