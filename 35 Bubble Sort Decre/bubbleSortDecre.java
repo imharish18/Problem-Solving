@@ -1,4 +1,4 @@
-public class app {
+public class bubbleSortDecre {
     public static void swap(int ar[], int i, int j){
         int temp = ar[i];
         ar[i] = ar[j];

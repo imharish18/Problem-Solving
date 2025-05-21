@@ -3,11 +3,10 @@ public class selectionSor {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
-        System.out.println("Swapping "+nums[i]+" "+nums[j]);
     }
     public static void selectionSort(int[] arr){
         int n = arr.length;
-        for(int i=0; i<n; i++){
+        for(int i=0; i<n-1; i++){
 
             int min=Integer.MAX_VALUE;
             int minIdx=-1;
@@ -17,7 +16,6 @@ public class selectionSor {
                     minIdx = j;
                 }
             }
-            System.out.println("\nThe minimum value is at index: "+minIdx);
             swap(arr, i, minIdx); 
 
         }
