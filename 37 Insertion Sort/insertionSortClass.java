@@ -1,4 +1,4 @@
-public class app {
+public class insertionSortClass {
     public static void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
