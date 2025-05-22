@@ -1,4 +1,4 @@
-class app {
+class mountainProblem {
     public static int peakIndexInMountainArray(int[] arr) {
         int n = arr.length;
         int lo=1, hi=n-2;
