@@ -1,4 +1,4 @@
-class app{
+class searchInRoatated{
     public static int searchIn(int[] ar, int target) {
         int n = ar.length;
         int lo=0,hi=n-1;
