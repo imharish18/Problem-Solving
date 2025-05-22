@@ -1,4 +1,4 @@
-class app {
+class fnl {
     public static int[] bsear(int[] ar, int target){ 
         int n = ar.length;
         int lo=0, hi = n-1;
