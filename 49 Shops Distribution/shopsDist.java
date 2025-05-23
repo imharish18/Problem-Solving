@@ -1,4 +1,4 @@
-class app{
+public class shopsDist {
     public static boolean isVal(int arr[], int shops, int capacity){
         int n = 0;
         for(int i=0; i<arr.length; i++){
@@ -26,8 +26,4 @@ class app{
         }
         return val;
     }
-    public static void main(String[] args){
-        int[] ar = {2,10,6};
-        System.out.println(minimizedMaximum(3, ar));
-    }
-} 
+}
