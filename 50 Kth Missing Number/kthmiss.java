@@ -1,4 +1,4 @@
-class app{
+public class kthmiss {
     public static int findKthPositive(int[] arr, int k) {
         int ans = 0;
         int n=arr.length, hi = n-1, lo=0;
@@ -13,9 +13,5 @@ class app{
         System.out.println(arr[hi]+" "+arr[lo]+" "+missed);
         ans = arr[hi]+(k-missed);
         return ans;
-    }
-    public static void main(String[] args){
-        int[] ar = {2,3,4,7,11};
-        System.out.println(findKthPositive(ar, 5));
-    }
-} 
+    }    
+}
