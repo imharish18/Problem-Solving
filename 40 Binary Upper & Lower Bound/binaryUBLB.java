@@ -1,7 +1,7 @@
 public class binaryUBLB {
-        public static int bsLowerBound(int[] ar, int target) {
+    public static int bsLowerBound(int[] ar, int target) {
         int lo=0,hi=ar.length-1,n=ar.length;
-        int lb = n;
+        int lb = n-1;
 
         while(lo<=hi){
             int mid = (hi-lo)/2+lo;
@@ -15,7 +15,7 @@ public class binaryUBLB {
     }
     public static int bsUpperBound(int[] ar, int target) {
         int lo=0,hi=ar.length-1;
-        int lb = ar.length;
+        int lb = ar.length-1;
 
         while(lo<=hi){
             int mid = (hi-lo)/2+lo;

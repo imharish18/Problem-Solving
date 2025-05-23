@@ -1,23 +1,29 @@
+import java.util.*;
 class app{
-    public static int searchIn(int[] ar, int target) {
-        int n = ar.length;
-        int lo=0,hi=n-1;
-        while(lo<=hi){
-            int mid = lo +(hi-lo)/2;
-            if(ar[mid]==target) return mid;
-            else if(ar[mid]<=ar[n-1]){
-                if(target>=ar[mid] && target<=ar[hi]) lo=mid+1;
-                else hi = mid-1;
+    public static List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0, right = arr.length - k;
+        while (left < right) {
+            int midpoint = left + (right - left) / 2;
+            if (x - arr[midpoint] > arr[midpoint + k] - x) {
+                left = midpoint + 1;
             }
-            else{
-                if(target>=ar[lo] && target<=ar[mid]) hi=mid-1;
-                else lo = mid+1;
+            else {
+                right = midpoint;
+                
             }
         }
-        return -1;
+
+        List<Integer> result = new ArrayList<>(k);
+        for (int i = left; i < left + k; i++) {
+            result.add(arr[i]);
+        }
+        return result;
     }
     public static void main(String[] args){
-        int[] ar = {3,4,5,6,7,0,1,2};
-        System.out.println(searchIn(ar,3));
+        int[] ar = {-2,-1,1,2,3,4,5};
+        int k = 7;
+        int x = 3;
+        System.out.println(findClosestElements(ar,k,x));
+
     }
 }
