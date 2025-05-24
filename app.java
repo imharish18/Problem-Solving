@@ -1,21 +1,9 @@
 class app{
-    public static int findKthPositive(int[] arr, int k) {
-        int ans = 0;
-        int n=arr.length, hi = n-1, lo=0;
-        int missed =0;
-        while(lo<=hi){
-            int mid = lo + (hi-lo)/2;
-            missed = arr[mid] - (mid+1);
-            if(missed<k)lo=mid+1;
-            else hi=mid-1;
-        }
-        missed = arr[hi]-(hi+1);
-        System.out.println(arr[hi]+" "+arr[lo]+" "+missed);
-        ans = arr[hi]+(k-missed);
-        return ans;
+    public static int faxt(int n) {
+        if(n<=1)return 1;
+        else return n*faxt(n-1);
     }
     public static void main(String[] args){
-        int[] ar = {2,3,4,7,11};
-        System.out.println(findKthPositive(ar, 5));
+        System.out.println(faxt(5));
     }
 } 
