@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
-
-class app{
+import java.util.*;
+class validP {
     public static boolean isValid(String s) {
         int n = s.length();
         if(n==1) return false;
@@ -24,8 +22,4 @@ class app{
         if(al.size()!=0) return false;
         return true;  
     }
-    public static void main(String[] args){
-        String s = "((";
-        System.out.println(isValid(s));
-    }
-} 
+}
