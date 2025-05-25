@@ -1,17 +1,9 @@
-import java.util.*;
 class app{
-    public static int strStr(String haystack, String needle) {
-        int hl = haystack.length();
-        int nl = needle.length();
-        if(nl==0) return 0;
-        for(int i=0; i<hl-nl+1; i++){
-            if(haystack.substring(i, i+nl).equals(needle)) return i;
-        }
-        return -1;
+    public static int maze(int row, int col, int n, int m) {
+        if(row == m || col == n) return 1;
+        else return maze(row+1,col,m,n)+maze(row,col+1,m,n);
     }
     public static void main(String[] args) {
-        String s = "a";
-        System.out.println(strStr(s, "a"));
-        System.out.println(s.substring(0,1));
+        System.out.println(maze(1,1,3,3));
     }
 } 
