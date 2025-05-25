@@ -1,5 +1,4 @@
-import java.util.*;
-class app{
+public class str58 {
     public static int strStr(String haystack, String needle) {
         int hl = haystack.length();
         int nl = needle.length();
@@ -9,9 +8,4 @@ class app{
         }
         return -1;
     }
-    public static void main(String[] args) {
-        String s = "a";
-        System.out.println(strStr(s, "a"));
-        System.out.println(s.substring(0,1));
-    }
-} 
+}
