@@ -1,4 +1,4 @@
-class app{
+public class substringsRecu {
     public static void stringSubsets(int i, String s, String ans){
         if(i==s.length()){
             System.out.print(ans+" ");
@@ -8,9 +8,4 @@ class app{
         stringSubsets(i+1, s, ans+ch);
         stringSubsets(i+1, s, ans);
     }
-    public static void main(String[] args) {
-        int[] arr = {1,4,5,6,7,9,0,5,3,2};
-        String s = "abcd";
-        stringSubsets(0,s,"");
-    }
-} 
+}
