@@ -1,7 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-class trike{
+public class mergeSrt {
         public static void mergeSort(int[] ar){
             int n = ar.length;
             if(n==1) return;
@@ -45,3 +42,4 @@ class trike{
         }
     }
 } 
+
