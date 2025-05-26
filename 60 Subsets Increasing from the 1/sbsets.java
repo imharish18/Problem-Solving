@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class app{
+class sbsets{
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         recursion(nums, 0, result, new ArrayList<>());
