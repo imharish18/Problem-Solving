@@ -1,18 +1,17 @@
 class trike{
-    public static void printPermutation(String ans,String s){
-        if(s.length()==0){
+    public static void printBinary(int a, String ans){
+        if(ans.length()==a){
             System.out.println(ans);
             return;
         }
-        for(int i=0; i<s.length(); i++){
-            char ch = s.charAt(i);
-            String left = s.substring(0, i);
-            String right = s.substring(i+1);
-            printPermutation(ans+ch, left+right);
+        if(ans.length()>0 && ans.charAt(ans.length()-1)=='1'){
+            printBinary(a, ans+'0');
+        }else{
+            printBinary(a, ans+'1');
+            printBinary(a, ans+'0');
         }
     }
     public static void main(String[] args) {
-        String s = "ahhirs";
-        printPermutation("",s);
+        printBinary(3,"");
     }
 } 
