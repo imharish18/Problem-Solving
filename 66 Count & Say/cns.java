@@ -1,8 +1,5 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-class trike{
-    public static String countAlpha(String s){
+public class cns {
+        public static String countAlpha(String s){
         String ans = "";
         int i=0,j=1;
         if(s.length()>0){
@@ -25,9 +22,4 @@ class trike{
         String ans=countAlpha(s);
         return ans;
     }
-
-    public static void main(String[] args) {
-        System.out.println(countAndSay(4));
-        
-    }
-} 
+}
