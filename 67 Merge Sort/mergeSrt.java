@@ -15,6 +15,7 @@ public class mergeSrt {
             mergeSort(a);
             mergeSort(b);
             merge(a,b,ar);
+            a=null; b=null;
         }
 
     public static void merge(int[] a, int[] b, int[] res){

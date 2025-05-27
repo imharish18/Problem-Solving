@@ -1,9 +1,7 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.*;;
 
-class trike {
-    public static int differenceOfSums(int n, int m) {
+public class nandm68 {
+        public static int differenceOfSums(int n, int m) {
         int num1=0,num2=0;
         ArrayList<Integer> al1 = new ArrayList<>();
         ArrayList<Integer> al2 = new ArrayList<>();
@@ -21,11 +19,5 @@ class trike {
     }
     public static void main(String[] args) {
         System.out.println(differenceOfSums(10,3));
-    }
-    
-    public static void print(int[] ar){
-        for(int e:ar){
-            System.out.print(e+" ");
-        }
     }
 }
