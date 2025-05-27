@@ -1,14 +1,10 @@
-public class trike{
-    public static void print(int[] ar){
-        for(int e:ar){
-            System.out.print(e+" ");
-        }
-    }
-    public static void swap(int[] ar, int i, int j){
+public class rando {
+        public static void swap(int[] ar, int i, int j){
                 int temp = ar[i];
                 ar[i] = ar[j];
                 ar[j]=temp;
     }
+
     public static int procedure(int[] ar, int lo, int hi){
         int mid = (lo+hi)/2;
         int pivot = ar[mid], pIdx = mid;
@@ -32,26 +28,10 @@ public class trike{
         }
         return pIdx;
     }
-    public static void quickSort(int[] ar, int lo, int hi, int k){
-
+    public static void quickSort(int[] ar, int lo, int hi){
         if(lo>=hi) return;
         int p = procedure(ar, lo, hi);
-        if(p==k) System.out.println(ar[k]);
-        else if(p>k){
-            quickSort(ar, lo, p-1,k);
-        }else{
-            quickSort(ar, p+1, hi,k);
-        }
-
-
-    }
-
-
-    public static void main(String[] args) {
-        int[] ar = {4,9,7,1,2,3,6};
-        print(ar);
-        System.out.println();
-        quickSort(ar, 0, ar.length-1, 1);
-        print(ar);
+        quickSort(ar, lo, p-1);
+        quickSort(ar, p+1, hi);
     }
 }
