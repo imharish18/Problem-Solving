@@ -1,5 +1,5 @@
-public class trike{
-    public static void print(int[] ar){
+public class iamquick {
+        public static void print(int[] ar){
         for(int e:ar){
             System.out.print(e+" ");
         }
@@ -35,12 +35,5 @@ public class trike{
         int p = procedure(ar, lo, hi);
         quickSort(ar, lo, p-1);
         quickSort(ar, p+1, hi);
-    }
-    public static void main(String[] args) {
-        int[] ar = {4,56,2,43,56,34,6,32,645,43,213,45,67,87,45,23,12,23,34,3,34,5,6,76,78,98,45,23};
-        print(ar);
-        System.out.println();
-        quickSort(ar, 0, ar.length-1);
-        print(ar);
     }
 }
