@@ -1,8 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.concurrent.ArrayBlockingQueue;
-
-class trike {
+public class c69 {
     static int count = 0;
     public static void countInversion(int[] ar1, int[] ar2){
         int i=0,j=0;
