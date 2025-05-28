@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class trike{
-    public static void swap(int[] ar, int i, int j){
+import java.util.*;
+public class multimiss {
+        public static void swap(int[] ar, int i, int j){
         int temp=ar[i];
         ar[i]=ar[j];
         ar[j]=temp;
@@ -21,17 +18,5 @@ public class trike{
             if(ar[j]!=j+1) al.add(j+1);
         }
         return al;
-    }
-    
-    public static void main(String[] args) {
-        int[] ar = {4,3,2,7,8,2,3,1};
-        for(int a: ar){
-            System.out.print(a+" ");
-        }
-        System.out.println(findDisappearedNumbers(ar));
-        
-            for(int a: ar){
-            System.out.print(a+" ");
-        }
     }
 }
