@@ -1,7 +1,5 @@
-import java.util.*;
-
-public class trike{
-    public static void swap(int[] ar, int i, int j){
+public class errornums {
+        public static void swap(int[] ar, int i, int j){
         int temp=ar[i];
         ar[i]=ar[j];
         ar[j]=temp;
@@ -26,15 +24,5 @@ public class trike{
             }
         }
         return new int[]{placedNo,missingNo};
-    }
-
-    public static void main(String[] args) {
-        int[] ar = {3,2,3,4,6,5};
-        int[] ar2 = {1,3,2,7,8,2,3,4};
-
-        Arrays.sort(ar2);
-        for(int e: findErrorNums(ar2)){
-            System.out.print(e+" ");
-        };
     }
 }
