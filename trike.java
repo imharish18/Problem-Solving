@@ -1,57 +1,35 @@
 public class trike{
-    public static void print(int[] ar){
-        for(int e:ar){
+    static int doo = 1;
+    public static void swap(int[] ar, int i, int j){
+        try {
+            int temp = ar[i];
+            ar[i] = ar[j];
+            ar[j]=temp;
+        } catch (Exception e) {
+            doo=0;
+        }
+
+    }
+    public static int missingNo(int[] ar){
+        int n = ar.length;
+        int i=0;
+            while(i!=n){
+                if(ar[i]==n) i++;
+                else if(ar[i]!=i){
+                    swap(ar, ar[i], i);
+                }else i++;
+            }
+            for(int j=0; j<n; j++){
+                if(ar[j]!=j) return j;
+            }
+            return n;
+    }
+    
+    public static void main(String[] args) {
+        int[] ar = {0,1,3,4,5};
+        missingNo(ar);
+        for(int e : ar){
             System.out.print(e+" ");
         }
-    }
-    public static void swap(int[] ar, int i, int j){
-                int temp = ar[i];
-                ar[i] = ar[j];
-                ar[j]=temp;
-    }
-    public static int procedure(int[] ar, int lo, int hi){
-        int mid = (lo+hi)/2;
-        int pivot = ar[mid], pIdx = mid;
-        int smallerCount = 0;
-        for(int i=lo; i<=hi; i++){
-            if(i==mid) continue;
-            if(ar[i]<=pivot) smallerCount++;
-        }
-        pIdx = lo+smallerCount;
-        swap(ar, mid, pIdx);
-        pivot = ar[pIdx];
-        int i=lo,j=hi;
-        while(i<pIdx && j>pIdx){
-            if(ar[i]<=pivot) i++;
-            else if(ar[j]>pivot) j--;
-            else if(ar[i]>pivot && ar[j]<=pivot){
-                swap(ar, i, j);
-                i++;
-                j--;
-            }
-        }
-        return pIdx;
-    }
-    public static void quickSort(int[] ar, int lo, int hi, int k){
-
-        if(lo>=hi) return;
-        int p = procedure(ar, lo, hi);
-        if(p==k) System.out.println(ar[k]);
-        else if(p>k){
-            quickSort(ar, lo, p-1,k);
-        }else{
-            quickSort(ar, p+1, hi,k);
-        }
-
-
-    }
-
-
-    public static void main(String[] args) {
-        int[] ar = {4,9,7,1,2,3,6};
-        print(ar);
-        System.out.println();
-        quickSort(ar, 0, ar.length-1, 1);
-        print(ar);
     }
 }
