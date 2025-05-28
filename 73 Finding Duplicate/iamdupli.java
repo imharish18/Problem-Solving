@@ -1,5 +1,5 @@
-public class trike{
-    public static void swap(int[] ar, int i, int j){
+public class iamdupli {
+        public static void swap(int[] ar, int i, int j){
         int temp=ar[i];
         ar[i]=ar[j];
         ar[j]=temp;
@@ -19,14 +19,5 @@ public class trike{
             }
         }
         return -1;
-    }
-    
-    public static void main(String[] args) {
-        int[] ar = {2,1,3,4,2};
-        int val = findDuplicate(ar);
-        System.out.println(val);
-        for(int a: ar){
-            System.out.print(a+" ");
-        }
     }
 }
