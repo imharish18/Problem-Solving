@@ -1,20 +1,11 @@
 import java.util.*;
 public class trike{
 
-    public static boolean containsDuplicate(int[] ar) {
-        int n = ar.length;
-        HashSet<Integer> hs = new HashSet<>();
-        for(int a: ar){
-            if(hs.contains(a)) return true;
-            hs.add(a);
-        }
 
-        if(hs.size()!=n) return true;
-        return false;
+    public static String longestPalindrome(String s) {
+        
     }
-    
     public static void main(String[] args) {
-        int[] ar = {3,6,2,4,5,6};
-        System.out.println(containsDuplicate(ar));
+        System.out.println(lengthOfLongestSubstring("aaabb")); // Note the L at the end
     }
 }
