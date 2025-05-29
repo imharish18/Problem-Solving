@@ -1,7 +1,6 @@
 import java.util.*;
-public class trike{
-
-    public static boolean containsDuplicate(int[] ar) {
+public class i78m {
+        public static boolean containsDuplicate(int[] ar) {
         int n = ar.length;
         HashSet<Integer> hs = new HashSet<>();
         for(int a: ar){
@@ -11,10 +10,5 @@ public class trike{
 
         if(hs.size()!=n) return true;
         return false;
-    }
-    
-    public static void main(String[] args) {
-        int[] ar = {3,6,2,4,5,6};
-        System.out.println(containsDuplicate(ar));
     }
 }
