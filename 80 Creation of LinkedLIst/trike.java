@@ -1,12 +1,14 @@
-public class crll {
+class crll {
     class Node{
         int val;
         Node next;
         Node(int val){
             this.val = val;
         }
+
     }
-    public class trike{
+}
+public class trike{
         public static void main(String[] args) {
             Node a = new Node(10);
             Node b = new Node(20);
@@ -25,5 +27,5 @@ public class crll {
             System.out.println(e);
             System.out.println(f);
         }
-    }
+    
 }
