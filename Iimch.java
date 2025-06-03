@@ -149,6 +149,7 @@ class SLL{
         System.out.println("Size of the Linked List: "+sz);
     }
 
+    
 }
 public class Iimch{
     public static void main(String[] args) {
