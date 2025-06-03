@@ -95,7 +95,45 @@ class SLL{
         temp.val=val;
     }
 
-    public void
+    public void deleteAtHead(){
+        if(head==null){
+            System.out.println("Linked List is Empty");
+            return;
+        }
+        head=head.next;
+        sz--;
+    }
+
+    public void deleteAtTail(){
+        if(head==null){
+            System.out.println("Linked List is Empty");
+            return;
+        }
+        
+        Node temp = head;
+        for(int i=1; i<sz-1; i++){
+            temp = temp.next;
+        }
+
+        temp.next = temp.next.next;
+        sz--;
+
+    }
+
+    public void deleteAt(int idx){
+        if(head==null){
+            System.out.println("Linked List is Empty");
+            return;
+        }
+
+        Node temp = head;
+        for(int i=1; i<idx; i++){
+            temp = temp.next;
+        }
+
+        temp.next = temp.next.next;
+        sz--;
+    }
 
     public void size(){
         System.out.println("Size of the Linked List: "+sz);
@@ -112,8 +150,9 @@ public class Iimch{
         list.insertAtStart(8);
         list.insertAtStart(9);
         list.insertAtEnd(5);
+
         list.display();
-        list.setElement(3,50);
+        list.size();
         list.display();
         list.size();
         
