@@ -1,13 +1,21 @@
-import java.util.*;
 class Node{
     int val;
     Node next;
+
     Node(int val){
         this.val = val;
     }
-
 }
-public class trike{
+
+
+public class Iimch{
+    
+    public static void printLinked(Node head){
+        while(head!=null){
+            System.out.println(head.val);
+            head = head.next;
+        }
+    }
     public static void main(String[] args) {
         Node a = new Node(10);
         Node b = new Node(20);
@@ -15,16 +23,16 @@ public class trike{
         Node d = new Node(40);
         Node e = new Node(50);
         Node f = new Node(60);
+
         a.next = b;
-        a.next.next = c;
-        a.next.next.next = d;
-        a.next.next.next.next = a;
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
-        System.out.println(d);
-        System.out.println(e);
-        System.out.println(f);
+        b.next = c;
+        c.next = d;
+        d.next = e;
+        e.next = f;
+
+        Node head = a;
+        printLinked(head);
     }
 }
+
 

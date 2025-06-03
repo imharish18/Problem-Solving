@@ -1,14 +1,12 @@
-class crll {
-    class Node{
-        int val;
-        Node next;
-        Node(int val){
-            this.val = val;
-        }
+class Node{
+    int val;
+    Node next;
+    Node(int val){
+        this.val = val;
+    }
 
     }
-}
-public class trike{
+public class trikee{
         public static void main(String[] args) {
             Node a = new Node(10);
             Node b = new Node(20);
