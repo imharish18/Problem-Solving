@@ -114,13 +114,21 @@ class SLL{
         for(int i=1; i<sz-1; i++){
             temp = temp.next;
         }
-
+        tail=temp;
         temp.next = temp.next.next;
         sz--;
 
     }
 
     public void deleteAt(int idx){
+        if(idx==0){
+            deleteAtHead();
+            return;
+        }
+        if(idx==sz){
+            deleteAtTail();
+            return;
+        }
         if(head==null){
             System.out.println("Linked List is Empty");
             return;
@@ -130,7 +138,9 @@ class SLL{
         for(int i=1; i<idx; i++){
             temp = temp.next;
         }
-
+        if(temp.next==tail){
+            tail=temp;
+        }
         temp.next = temp.next.next;
         sz--;
     }
@@ -153,8 +163,11 @@ public class Iimch{
 
         list.display();
         list.size();
+        list.deleteAtTail();
         list.display();
         list.size();
+        System.out.println(list.tail.val);
+
         
     }
 }
