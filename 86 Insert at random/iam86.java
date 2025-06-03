@@ -1,14 +1,5 @@
-class Node{
-    int val;
-    Node next;
-
-    Node(int val){
-        this.val = val;
-    }
-}
-
-class SLL{
-    Node head;
+public class iam86 {
+        Node head;
     Node tail;
     int sz=0;
 
@@ -53,32 +44,4 @@ class SLL{
         x.next=temp;
         sz++;
     }
-
-    public void display(){
-        Node temp = head;
-
-        while(temp!=null){
-            System.out.print(temp.val+" ");
-            temp = temp.next;
-        }
-        System.out.println();
-    }
-    public void size(){
-        System.out.println("Size of the Linked List: "+sz);
-    }
-
 }
-public class Iimch{
-    public static void main(String[] args) {
-        SLL list = new SLL();
-        list.insertAtStart(2);
-        list.insertAtStart(3);
-        list.insertAtStart(4);
-        list.insertAtEnd(5);
-        list.insertAt(5, 99);
-        list.display();
-        list.size();
-    }
-}
-
-
