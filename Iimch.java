@@ -31,6 +31,7 @@ class SLL{
         }
         sz++;
     }
+
     public void insertAt(int idx, int val){
         Node temp = new Node(val);
         if(idx==0){
@@ -41,7 +42,7 @@ class SLL{
             insertAtEnd(val);
             return;
         }
-        if(idx>sz){
+        if(idx>sz || idx<0){
             System.out.println("Invalid Index!!");
             return;
         }
@@ -63,6 +64,39 @@ class SLL{
         }
         System.out.println();
     }
+
+    public int getElement(int idx){
+        if(idx>sz || idx<0){
+            System.out.println("Invalid Index");
+            return -1;
+        }
+        if(idx==0) return head.val;
+        if(idx==sz-1) return tail.val;
+
+        Node temp = head;
+        for(int i=0; i<idx; i++){
+            temp = temp.next;
+        }
+        return temp.val;
+    }
+
+    public void setElement(int idx, int val){
+        if(idx>sz || idx<0){
+            System.out.println("Invalid Index");
+
+        }
+        if(idx==0) head.val=val;
+        if(idx==sz-1)tail.val = val;
+
+        Node temp = head;
+        for(int i=0; i<idx; i++){
+            temp = temp.next;
+        }
+        temp.val=val;
+    }
+
+    public void
+
     public void size(){
         System.out.println("Size of the Linked List: "+sz);
     }
@@ -74,10 +108,15 @@ public class Iimch{
         list.insertAtStart(2);
         list.insertAtStart(3);
         list.insertAtStart(4);
+        list.insertAtStart(7);
+        list.insertAtStart(8);
+        list.insertAtStart(9);
         list.insertAtEnd(5);
-        list.insertAt(5, 99);
+        list.display();
+        list.setElement(3,50);
         list.display();
         list.size();
+        
     }
 }
 

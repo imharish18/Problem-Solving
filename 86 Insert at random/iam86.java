@@ -32,7 +32,7 @@ public class iam86 {
             insertAtEnd(val);
             return;
         }
-        if(idx>sz){
+        if(idx>sz || idx<0){
             System.out.println("Invalid Index!!");
             return;
         }
