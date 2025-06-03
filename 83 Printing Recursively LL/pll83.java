@@ -7,7 +7,7 @@ class Node{
     }
 }
 
-public class Iimch{
+public class pll83{
     public static void printLinked(Node head){
         if (head==null) return;
         System.out.println(head.val);
@@ -31,5 +31,3 @@ public class Iimch{
         printLinked(head);
     }
 }
-
-
