@@ -4,9 +4,8 @@ class Node{
     Node(int val){
         this.val = val;
     }
-
-    }
-public class trikee{
+}
+public class trikeee{
         public static void main(String[] args) {
             Node a = new Node(10);
             Node b = new Node(20);

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-
+public class iam91 {
 class Node{
     int val;
     Node next;
@@ -195,26 +193,4 @@ class SLL{
         }
     }
 }
-public class Iimch{
-    public static void main(String[] args) {
-        ArrayList<Node> hs = new ArrayList<>();
-
-        SLL l1 = new SLL();
-        l1.insertAtEnd(1);
-        l1.insertAtEnd(1);
-        l1.insertAtEnd(2);
-        l1.insertAtEnd(2);
-        l1.insertAtEnd(2);
-        l1.insertAtEnd(3);
-        l1.insertAtEnd(3);
-        l1.insertAtEnd(4);
-        l1.insertAtEnd(4);
-        l1.insertAtEnd(4);
-        l1.display();
-        l1.deleteDuplicates();
-        l1.display();
-
-    }
 }
-
-

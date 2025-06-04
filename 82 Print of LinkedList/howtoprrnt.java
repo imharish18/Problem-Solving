@@ -8,7 +8,7 @@
 }
 
 
-public class howtoprnt{
+public class howtoprrnt{
     
     public static void printLinked(Node head){
         while(head!=null){
