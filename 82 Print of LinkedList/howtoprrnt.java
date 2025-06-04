@@ -1,15 +1,5 @@
-    class Node{
-    int val;
-    Node next;
-
-    Node(int val){
-        this.val = val;
-    }
-}
-
 
 public class howtoprrnt{
-    
     public static void printLinked(Node head){
         while(head!=null){
             System.out.println(head.val);
