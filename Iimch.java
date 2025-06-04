@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 
 class Node{
     int val;
@@ -14,6 +13,59 @@ class SLL{
     Node head;
     Node tail;
     int sz=0;
+
+    public void spiralMatrix(int m, int n) {
+        int[][] arr = new int[m][n];
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[i].length; j++){
+                arr[i][j]=-1;
+            }
+            System.out.println();
+        }
+
+        Node traverse = head;
+
+        int minR = 0, minC = 0, maxR = arr.length-1, maxC = arr[0].length-1;
+
+
+        while(minR<=maxR && minC<=maxC && traverse!=null){
+            for(int i = minC; i<=maxC; i++){
+                arr[minR][i] = traverse.val;
+                if(traverse.next==null) break;
+                traverse = traverse.next;
+            }
+            minR++;
+            if(minR>maxR || minC>maxC || traverse.next==null) break;
+
+            for(int i = minR; i<=maxR; i++){
+                arr[i][maxC] = traverse.val;
+                traverse = traverse.next;
+            }
+            maxC--;
+            if(minR>maxR || minC>maxC || traverse.next==null) break;
+            
+            for(int i = maxC; i>=minC; i--){ 
+                arr[maxR][i] = traverse.val;
+                traverse = traverse.next;
+            }
+            maxR--;
+            if(minR>maxR || minC>maxC || traverse.next==null) break;
+
+            for(int i = maxR; i>=minR; i--){ 
+                arr[i][minC] = traverse.val;
+                traverse = traverse.next;
+            }
+            minC++;
+    }
+    System.out.println("--------------------------------");
+            for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[i].length; j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
 
     public void insertAtStart(int val){
         Node temp = new Node(val);
@@ -200,18 +252,21 @@ public class Iimch{
         ArrayList<Node> hs = new ArrayList<>();
 
         SLL l1 = new SLL();
-        l1.insertAtEnd(1);
-        l1.insertAtEnd(1);
-        l1.insertAtEnd(2);
-        l1.insertAtEnd(2);
-        l1.insertAtEnd(2);
         l1.insertAtEnd(3);
-        l1.insertAtEnd(3);
+        l1.insertAtEnd(0);
+        l1.insertAtEnd(2);
+        l1.insertAtEnd(6);
+        l1.insertAtEnd(8);
+        l1.insertAtEnd(1);
+        l1.insertAtEnd(7);
+        l1.insertAtEnd(9);
         l1.insertAtEnd(4);
-        l1.insertAtEnd(4);
-        l1.insertAtEnd(4);
+        l1.insertAtEnd(2);
+        l1.insertAtEnd(5);
+        l1.insertAtEnd(5);
+        l1.insertAtEnd(0);
         l1.display();
-        l1.deleteDuplicates();
+        l1.spiralMatrix(3,5);
         l1.display();
 
     }
