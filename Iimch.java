@@ -257,19 +257,17 @@ public class Iimch{
         System.out.println();
     }
 
-    public static void reverse(Node head){
-    if (head == null || head.next == null) return;
-
-    Node prev = null;
-    Node curr = head;
-
-    while (curr != null) {
-        Node next = curr.next;  // save next node
-        curr.next = prev;       // reverse link
-        prev = curr;            // move prev forward
-        curr = next;            // move curr forward
-    }
-        displayW(prev);
+    public static boolean isPalindrome(Node head) {
+        int len=0;
+        Node temp = head;
+        while(temp!=null){
+            len++;
+            temp=temp.next;
+        }
+        int mid=len/2+1;
+        System.out.println(mid);
+        System.out.println(len);
+        return true;
     }
     public static void main(String[] args) {
         ArrayList<Node> hs = new ArrayList<>();
@@ -278,11 +276,11 @@ public class Iimch{
         l1.insertAtEnd(1);
         l1.insertAtEnd(2);
         l1.insertAtEnd(3);
-        l1.insertAtEnd(4);
-        l1.insertAtEnd(5);
+        l1.insertAtEnd(3);
+        l1.insertAtEnd(2);
+        l1.insertAtEnd(1);
         l1.display();
-        reverse(l1.head);
-
+        isPalindrome(l1.head);
 
     }
 }
