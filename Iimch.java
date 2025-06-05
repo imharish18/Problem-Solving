@@ -257,45 +257,31 @@ public class Iimch{
         System.out.println();
     }
 
-    public static void partition(Node head, int x){
+    public static void reverse(Node head){
+    if (head == null || head.next == null) return;
 
-        Node a = new Node(-1);
-        Node b = new Node(-1);
+    Node prev = null;
+    Node curr = head;
 
-        Node ta = a;
-        Node tb = b;
-
-        Node temp = head;
-
-        while(temp!=null){
-            if(temp.val<x){
-                ta.next=temp;
-                ta=ta.next;
-            }else{
-                tb.next=temp;
-                tb=tb.next;
-            }   
-            temp = temp.next;
-        }
-        tb.next = null;
-        a=a.next;
-        b=b.next;
-        ta.next = b;
-
+    while (curr != null) {
+        Node next = curr.next;  // save next node
+        curr.next = prev;       // reverse link
+        prev = curr;            // move prev forward
+        curr = next;            // move curr forward
+    }
+        displayW(prev);
     }
     public static void main(String[] args) {
         ArrayList<Node> hs = new ArrayList<>();
 
         SLL l1 = new SLL();
         l1.insertAtEnd(1);
-        l1.insertAtEnd(4);
+        l1.insertAtEnd(2);
         l1.insertAtEnd(3);
-        l1.insertAtEnd(2);
+        l1.insertAtEnd(4);
         l1.insertAtEnd(5);
-        l1.insertAtEnd(2);
         l1.display();
-        partition(l1.head,3);
-
+        reverse(l1.head);
 
 
     }
