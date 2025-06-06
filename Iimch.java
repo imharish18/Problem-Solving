@@ -68,27 +68,27 @@ class SLL{
 
 
     public void insertAtStart(int val){
-        Node temp = new Node(val);
-        if(head==null) head = tail = temp;
+        Node slow = new Node(val);
+        if(head==null) head = tail = slow;
         else{
-            temp.next = head;
-            head = temp;
+            slow.next = head;
+            head = slow;
         }
         sz++;
     }
 
     public void insertAtEnd(int val){
-        Node temp = new Node(val);
-        if(head==null) head = tail = temp;
+        Node slow = new Node(val);
+        if(head==null) head = tail = slow;
         else{
-            tail.next = temp;
-            tail = temp;
+            tail.next = slow;
+            tail = slow;
         }
         sz++;
     }
 
     public void insertAt(int idx, int val){
-        Node temp = new Node(val);
+        Node slow = new Node(val);
         if(idx==0){
             insertAtStart(val);
             return;
@@ -105,17 +105,17 @@ class SLL{
         for(int i=1; i<idx; i++){
             x=x.next;
         }
-        temp.next=x.next;
-        x.next=temp;
+        slow.next=x.next;
+        x.next=slow;
         sz++;
     }
 
     public void display(){
-        Node temp = head;
+        Node slow = head;
 
-        while(temp!=null){
-            System.out.print(temp.val+" ");
-            temp = temp.next;
+        while(slow!=null){
+            System.out.print(slow.val+" ");
+            slow = slow.next;
         }
         System.out.println();
     }
@@ -128,11 +128,11 @@ class SLL{
         if(idx==0) return head.val;
         if(idx==sz-1) return tail.val;
 
-        Node temp = head;
+        Node slow = head;
         for(int i=0; i<idx; i++){
-            temp = temp.next;
+            slow = slow.next;
         }
-        return temp.val;
+        return slow.val;
     }
 
     public void setElement(int idx, int val){
@@ -143,11 +143,11 @@ class SLL{
         if(idx==0) head.val=val;
         if(idx==sz-1)tail.val = val;
 
-        Node temp = head;
+        Node slow = head;
         for(int i=0; i<idx; i++){
-            temp = temp.next;
+            slow = slow.next;
         }
-        temp.val=val;
+        slow.val=val;
     }
 
     public void deleteAtHead(){
@@ -165,12 +165,12 @@ class SLL{
             return;
         }
         
-        Node temp = head;
+        Node slow = head;
         for(int i=1; i<sz-1; i++){
-            temp = temp.next;
+            slow = slow.next;
         }
-        tail=temp;
-        temp.next = temp.next.next;
+        tail=slow;
+        slow.next = slow.next.next;
         sz--;
 
     }
@@ -189,14 +189,14 @@ class SLL{
             return;
         }
 
-        Node temp = head;
+        Node slow = head;
         for(int i=1; i<idx; i++){
-            temp = temp.next;
+            slow = slow.next;
         }
-        if(temp.next==tail){
-            tail=temp;
+        if(slow.next==tail){
+            tail=slow;
         }
-        temp.next = temp.next.next;
+        slow.next = slow.next.next;
         sz--;
     }
 
@@ -232,55 +232,84 @@ class SLL{
         for(int x=0; x<len-k; x++){
             j=j.next;
         }
-        int temp = j.val;
+        int slow = j.val;
         j.val = i.val;
-        i.val = temp;
+        i.val = slow;
     }
 
     public void deleteDuplicates() {
-        Node temp = head;
-        while(temp.next!=null){
-            if(temp.val==temp.next.val){
-                temp.next = temp.next.next;
+        Node slow = head;
+        while(slow.next!=null){
+            if(slow.val==slow.next.val){
+                slow.next = slow.next.next;
             }
-            else temp=temp.next;
+            else slow=slow.next;
         }
     }
 }
 public class Iimch{
     public static void displayW(Node head){
-        Node temp = head;
-        while(temp!=null){
-            System.out.print(temp.val+" ");
-            temp=temp.next;
+        
+        Node slow = head;
+        while(slow!=null){
+            System.out.print(slow.val+" ");
+            slow=slow.next;
         }
         System.out.println();
     }
+    public static Node[] reverse(Node head){
+        if (head == null || head.next == null) return new Node[]{head}; 
+        Node prev = null;
+        Node curr = head;
 
-    public static boolean isPalindrome(Node head) {
-        int len=0;
-        Node temp = head;
-        while(temp!=null){
-            len++;
-            temp=temp.next;
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;         
+            curr = next;          
         }
-        int mid=len/2+1;
-        System.out.println(mid);
-        System.out.println(len);
-        return true;
+        return new Node[]{prev,head};
+    }
+
+    public static Node reverseBetween(Node head, int left, int right) {
+        if(head==null || head.next==null || left==right) return head;
+
+        Node a=null, b=null, c=null, d=null;
+        Node temp = head;
+
+        int pos = 1;
+
+        while(temp!=null){
+            if(pos==left-1) a = temp;
+            if(pos==left) b = temp;
+            if(pos==right) c = temp;
+            if(pos==right+1) d = temp;
+            temp = temp.next;
+            pos++;
+        }
+        if(a!=null) a.next = null; 
+        if(c!=null)c.next = null;
+        reverse(b);
+        if(a!=null) a.next = c; 
+        b.next = d;
+        if(a==null) return c;
+        return head;
     }
     public static void main(String[] args) {
-        ArrayList<Node> hs = new ArrayList<>();
-
         SLL l1 = new SLL();
         l1.insertAtEnd(1);
         l1.insertAtEnd(2);
         l1.insertAtEnd(3);
-        l1.insertAtEnd(3);
-        l1.insertAtEnd(2);
-        l1.insertAtEnd(1);
+        l1.insertAtEnd(4);
+        l1.insertAtEnd(5);
+        l1.insertAtEnd(6);
+        l1.insertAtEnd(7);
+        l1.insertAtEnd(8);
+        l1.insertAtEnd(9);
+
         l1.display();
-        isPalindrome(l1.head);
+        reverseBetween(l1.head, 3,6);
+        l1.display();
 
     }
 }
