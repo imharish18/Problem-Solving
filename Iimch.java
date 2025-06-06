@@ -271,14 +271,31 @@ public class Iimch{
         return prev;
     }
     public static void reorderList(Node head) {
-        Node temp = head.next;
-        Node save = head;
-        while(temp!=null){
-            temp = reverse(temp);
-            displayW(temp);
-            save.next = temp;
+        Node slow = head;
+        Node fast = head.next;
+
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+
+        fast = reverse(slow.next);
+        slow.next=null;
+        slow=head.next;
+        Node temp = head;
+        while(slow!=null && fast!=null){
+            temp.next=fast;
+            fast=fast.next;
             temp=temp.next;
-            save=save.next;
+            temp.next=slow;
+            slow=slow.next;
+            temp=temp.next;
+        }
+        if(slow==null){
+            temp.next = fast;
+        }else{
+            temp.next = slow;
         }
     }
     public static Node reverseBetween(Node head, int left, int right) {
