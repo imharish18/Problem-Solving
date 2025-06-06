@@ -17,7 +17,6 @@ public class im98 {
         Node save = head;
         while(temp!=null){
             temp = reverse(temp);
-            displayW(temp);
             save.next = temp;
             temp=temp.next;
             save=save.next;
