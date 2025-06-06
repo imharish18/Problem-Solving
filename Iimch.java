@@ -322,17 +322,63 @@ public class Iimch{
         if(a==null) return c;
         return head;
     }
+
+    public static Node[] splitListToParts(Node head, int k) {
+        ArrayList<Node> al = new ArrayList<>();
+        int len = 0;
+        Node temp = head;
+        while(temp!=null){
+            temp = temp.next;
+            len++;
+        }
+        temp = head;
+
+        for(int i=0; i<len%k; i++){
+        Node dummy = new Node(-1);
+        Node d = dummy;
+            for(int j=0; j<len/k+1; j++){
+                System.out.print(j+" ");
+                d.next = temp;
+                temp = temp.next;
+                d=d.next;
+            }
+            d.next=null;
+            displayW(dummy.next);
+            al.add(dummy.next);
+        }
+        for(int i=0; i<k-len%k; i++){
+            Node dummy = new Node(-1);
+            Node d = dummy;
+            for(int j=0; j<len/k; j++){
+                System.out.print(j+" ");
+                d.next = temp;
+                temp = temp.next;
+                d=d.next;
+            }
+            d.next=null;
+            displayW(dummy.next);
+            al.add(dummy.next);
+        }
+        System.out.println(al);
+        return al.toArray(new Node[k]);
+    }
     public static void main(String[] args) {
         SLL l1 = new SLL();
+
         l1.insertAtEnd(1);
         l1.insertAtEnd(2);
         l1.insertAtEnd(3);
         l1.insertAtEnd(4);
         l1.insertAtEnd(5);
         l1.insertAtEnd(6);
+        l1.insertAtEnd(7);
+        l1.insertAtEnd(8);
+        l1.insertAtEnd(9);
+        l1.insertAtEnd(10);
+        l1.insertAtEnd(11);
 
         l1.display();
-        reorderList(l1.head);
+        splitListToParts(l1.head, 3);
         l1.display();
 
     }
