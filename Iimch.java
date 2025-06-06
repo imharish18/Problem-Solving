@@ -257,20 +257,30 @@ public class Iimch{
         }
         System.out.println();
     }
-    public static Node[] reverse(Node head){
-        if (head == null || head.next == null) return new Node[]{head}; 
+    public static Node reverse(Node head){
+        if (head == null || head.next == null) return head; 
         Node prev = null;
         Node curr = head;
 
         while (curr != null) {
             Node next = curr.next;
             curr.next = prev;
-            prev = curr;         
+            prev = curr;        
             curr = next;          
         }
-        return new Node[]{prev,head};
+        return prev;
     }
-
+    public static void reorderList(Node head) {
+        Node temp = head.next;
+        Node save = head;
+        while(temp!=null){
+            temp = reverse(temp);
+            displayW(temp);
+            save.next = temp;
+            temp=temp.next;
+            save=save.next;
+        }
+    }
     public static Node reverseBetween(Node head, int left, int right) {
         if(head==null || head.next==null || left==right) return head;
 
@@ -303,12 +313,9 @@ public class Iimch{
         l1.insertAtEnd(4);
         l1.insertAtEnd(5);
         l1.insertAtEnd(6);
-        l1.insertAtEnd(7);
-        l1.insertAtEnd(8);
-        l1.insertAtEnd(9);
 
         l1.display();
-        reverseBetween(l1.head, 3,6);
+        reorderList(l1.head);
         l1.display();
 
     }
