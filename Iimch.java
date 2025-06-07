@@ -257,8 +257,42 @@ public class Iimch{
         }
         System.out.println();
     }
-    public static Node reverse(Node head){
-        if (head == null || head.next == null) return head; 
+    public static Node[] splitListToParts(Node head, int k) {
+        ArrayList<Node> arr = new ArrayList<>();
+        int n = 0;
+        Node temp = head;
+        while(temp!=null){
+            temp = temp.next;
+            n++;
+        }
+
+        int size = n/k;
+        int extra = n%k;
+        temp = head;
+        int len=1;
+
+        while(temp!=null){
+            int s=size;
+            if(extra>0) s++;
+            if(len==1) arr.add(temp);
+            if(len==s){
+                Node a = temp.next;
+                temp.next=null;
+                temp=a;
+                len=1;
+                extra--;
+            }else{
+                temp=temp.next;
+                len++;
+            }
+        }
+        for(int i=0; i<arr.size(); i++){
+            displayW(arr.get(i));
+        }
+    return arr.toArray(new Node[k]);
+    }
+    public static Node[] reverse(Node head){
+        if (head == null || head.next == null) return new Node[]{head,null}; 
         Node prev = null;
         Node curr = head;
 
@@ -268,119 +302,53 @@ public class Iimch{
             prev = curr;        
             curr = next;          
         }
-        return prev;
+        return new Node[]{prev,head};
     }
-    public static void reorderList(Node head) {
-        Node slow = head;
-        Node fast = head.next;
-
-        while(fast!=null && fast.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-
-        fast = reverse(slow.next);
-        slow.next=null;
-        slow=head.next;
-        Node temp = head;
-        while(slow!=null && fast!=null){
-            temp.next=fast;
-            fast=fast.next;
-            temp=temp.next;
-            temp.next=slow;
-            slow=slow.next;
-            temp=temp.next;
-        }
-        if(slow==null){
-            temp.next = fast;
-        }else{
-            temp.next = slow;
-        }
-    }
-    public static Node reverseBetween(Node head, int left, int right) {
-        if(head==null || head.next==null || left==right) return head;
-
-        Node a=null, b=null, c=null, d=null;
-        Node temp = head;
-
-        int pos = 1;
-
-        while(temp!=null){
-            if(pos==left-1) a = temp;
-            if(pos==left) b = temp;
-            if(pos==right) c = temp;
-            if(pos==right+1) d = temp;
-            temp = temp.next;
-            pos++;
-        }
-        if(a!=null) a.next = null; 
-        if(c!=null)c.next = null;
-        reverse(b);
-        if(a!=null) a.next = c; 
-        b.next = d;
-        if(a==null) return c;
-        return head;
-    }
-
-    public static Node[] splitListToParts(Node head, int k) {
+    public static void reverseKGroup(Node head, int k) {
         ArrayList<Node> al = new ArrayList<>();
-        int len = 0;
-        Node temp = head;
-        while(temp!=null){
-            temp = temp.next;
-            len++;
-        }
-        temp = head;
 
-        for(int i=0; i<len%k; i++){
+        Node back = head;
+        Node front = head;
+
+        int len = 1;
+        int counter = 0;
+        while(front!=null){
+            if(len==1) al.add(back);
+            if(len<k){
+                front = front.next;
+                len++;
+            }
+            else{
+                len=1;
+                back = front.next;
+                front.next = null;
+                front = back;
+                counter++;
+            }
+        }
+        System.out.println(counter);
         Node dummy = new Node(-1);
         Node d = dummy;
-            for(int j=0; j<len/k+1; j++){
-                System.out.print(j+" ");
-                d.next = temp;
-                temp = temp.next;
-                d=d.next;
-            }
-            d.next=null;
-            displayW(dummy.next);
-            al.add(dummy.next);
+        for(int i=0; i<counter; i++){
+            Node[] res = reverse(al.get(i));
+            d.next=res[0];
+            d=res[1];
         }
-        for(int i=0; i<k-len%k; i++){
-            Node dummy = new Node(-1);
-            Node d = dummy;
-            for(int j=0; j<len/k; j++){
-                System.out.print(j+" ");
-                d.next = temp;
-                temp = temp.next;
-                d=d.next;
-            }
-            d.next=null;
-            displayW(dummy.next);
-            al.add(dummy.next);
+        if(counter>0){
+            d.next = back;
         }
-        System.out.println(al);
-        return al.toArray(new Node[k]);
+        displayW(dummy.next);
     }
     public static void main(String[] args) {
         SLL l1 = new SLL();
-
         l1.insertAtEnd(1);
         l1.insertAtEnd(2);
         l1.insertAtEnd(3);
         l1.insertAtEnd(4);
         l1.insertAtEnd(5);
         l1.insertAtEnd(6);
-        l1.insertAtEnd(7);
-        l1.insertAtEnd(8);
-        l1.insertAtEnd(9);
-        l1.insertAtEnd(10);
-        l1.insertAtEnd(11);
-
         l1.display();
-        splitListToParts(l1.head, 3);
-        l1.display();
-
+        reverseKGroup(l1.head, 3);
     }
 }
 
