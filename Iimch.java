@@ -291,8 +291,8 @@ public class Iimch{
         }
     return arr.toArray(new Node[k]);
     }
-    public static Node[] reverse(Node head){
-        if (head == null || head.next == null) return new Node[]{head,null}; 
+    public static Node reverse(Node head){
+        if (head == null || head.next == null) return head; 
         Node prev = null;
         Node curr = head;
 
@@ -302,53 +302,68 @@ public class Iimch{
             prev = curr;        
             curr = next;          
         }
-        return new Node[]{prev,head};
+        return prev;
     }
     public static void reverseKGroup(Node head, int k) {
-        ArrayList<Node> al = new ArrayList<>();
+        if(k==1) return;
+        Node dummy = new Node(-1);
 
+        Node d = dummy;
         Node back = head;
+        Node temp = head;
         Node front = head;
-
         int len = 1;
-        int counter = 0;
         while(front!=null){
-            if(len==1) al.add(back);
             if(len<k){
                 front = front.next;
                 len++;
-            }
-            else{
+            }else{
                 len=1;
-                back = front.next;
-                front.next = null;
-                front = back;
-                counter++;
+                temp=front;
+                front=front.next;
+                temp.next=null;
+                reverse(back);
+                d.next=temp;
+                d=back;
+                back.next=front;
+                back=back.next;
             }
-        }
-        System.out.println(counter);
-        Node dummy = new Node(-1);
-        Node d = dummy;
-        for(int i=0; i<counter; i++){
-            Node[] res = reverse(al.get(i));
-            d.next=res[0];
-            d=res[1];
-        }
-        if(counter>0){
-            d.next = back;
         }
         displayW(dummy.next);
+       
     }
+
+
+    public static void nodesBetweenCriticalPoints(Node head) {
+        Node left = head, mid = head.next, right = head.next.next;
+        int first = -1, last = -1, idx = 1;
+        int minD=0;
+        while(right!=null){
+            if(mid.val<left.val && mid.val<right.val || mid.val>left.val && mid.val>right.val){
+                if(first==-1) first = idx;
+                minD = idx-last;
+                last = idx;
+
+            }
+            idx++;
+            left= left.next;
+            mid = mid.next;
+            right = right.next;
+        }
+        if(first==last) return;
+        int maxD = last-first;
+    }
+
     public static void main(String[] args) {
         SLL l1 = new SLL();
-        l1.insertAtEnd(1);
+        l1.insertAtEnd(5);
         l1.insertAtEnd(2);
         l1.insertAtEnd(3);
         l1.insertAtEnd(4);
         l1.insertAtEnd(5);
-        l1.insertAtEnd(6);
         l1.display();
-        reverseKGroup(l1.head, 3);
+        nodesBetweenCriticalPoints(l1.head);
+        l1.display();
     }
 }
 
