@@ -50,7 +50,7 @@ public class iam103 {
         Node t2 = head2;
         while(t1!=null){
             t2 = t1.next;
-            if(t1.random!=null) t2.random = t1.random.next;
+            // if(t1.random!=null) t2.random = t1.random.next;
             t1=t1.next.next;
         }
         // SplitLinkedLL

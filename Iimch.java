@@ -3,6 +3,7 @@ import java.util.*;
 class Node{
     int val;
     Node next;
+    public Object random;
 
     Node(int val){
         this.val = val;
