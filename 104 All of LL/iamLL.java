@@ -353,6 +353,7 @@ public class iamLL{
         }
         if(first==last) return;
         int maxD = last-first;
+        System.out.println(minD+" " + maxD);
     }
 
     public static void main(String[] args) {

@@ -338,11 +338,9 @@ public class Iimch{
     public static void nodesBetweenCriticalPoints(Node head) {
         Node left = head, mid = head.next, right = head.next.next;
         int first = -1, last = -1, idx = 1;
-        int minD=0;
         while(right!=null){
             if(mid.val<left.val && mid.val<right.val || mid.val>left.val && mid.val>right.val){
                 if(first==-1) first = idx;
-                minD = idx-last;
                 last = idx;
 
             }
@@ -352,7 +350,6 @@ public class Iimch{
             right = right.next;
         }
         if(first==last) return;
-        int maxD = last-first;
     }
 
     public static void main(String[] args) {
