@@ -8,6 +8,9 @@ class Node{
 class Stack{
     int size=0;
     Node head=null;
+    public int size(){
+        return size;
+    }
     public void push(int val){
         Node temp = new Node(val);
         if(head==null) head=temp;
@@ -21,6 +24,7 @@ class Stack{
     public void pop(){
         if(head==null) System.out.println("Stack is Empty");
         else head=head.next;
+        size--;
     }
     public int peek(){
         if(head==null) return -1;
@@ -45,7 +49,9 @@ public class solving {
         st.push(199);
         st.push(299);
         st.display();
+        System.out.println(st.size);
         st.pop();
+        System.out.println(st.size);
         st.display();
     }
 }
