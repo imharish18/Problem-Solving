@@ -8,6 +8,10 @@ class Node{
 class Stack{
     int size=0;
     Node head=null;
+    public boolean isEmpty(){
+        if(head==null) return true;
+        else return false;
+    }
     public int size(){
         return size;
     }
@@ -38,7 +42,14 @@ class Stack{
         }
         System.out.println();
     }
-
+    public void displayRecursion(Node head){
+        if(head==null) return;
+        displayRecursion(head.next);
+        System.out.print(head.val+" ");
+    }
+    public void displayRev(){
+        displayRecursion(head);
+    }
 
 }
 public class solving {
@@ -48,10 +59,15 @@ public class solving {
         st.push(99);
         st.push(199);
         st.push(299);
+        st.push(199);
+        st.push(299);
+        st.push(199);
+        st.push(299);
         st.display();
         System.out.println(st.size);
         st.pop();
         System.out.println(st.size);
         st.display();
+        st.displayRev();
     }
 }

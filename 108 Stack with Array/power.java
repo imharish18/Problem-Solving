@@ -59,10 +59,12 @@ class Stack{
         }
         return "[ "+sb.toString()+"]";
     }
-
 }
 
 public class power {
+    public static void isBalanced(Stack st){
+        System.out.println(st.peek());
+    }
     public static void main(String[] args) {
         Stack st = new Stack(5);
         st.push(7);
@@ -70,7 +72,7 @@ public class power {
         st.push(3);
         st.push(1);
         st.push(7);
-        System.out.println(st.size());
-        System.out.println(st);
+
+        isBalanced(st);
     }
 }
