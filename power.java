@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Stack{
     int size;
     int top;
@@ -81,9 +83,29 @@ public class power {
         }
         System.out.println(st);
     }
+    public static String minWindow(String s, String t) {
+        ArrayList<String> al = new ArrayList<>();
+        String newANS = s;
+
+        for(int i=t.length(); i<=s.length()+1; i++){
+            for(int j=i+1; j<s.length(); j++){
+                String ans = s.substring(i, j+1);
+                Boolean flag = true;
+                for(char c : t.toCharArray()){
+                    if(!ans.contains(c+"")) flag=false;
+                }
+                if(flag==true){
+                    if(newANS.length()>ans.length()) newANS = ans;
+                    al.add(ans);
+                }
+
+            }
+        }
+        return newANS;
+    }
 
     public static void main(String[] args) {
-        Stack st = new Stack(20);
-        removeDuplicates(1122333445, st);
+        System.out.println(minWindow("ADOBECODEBANC", "ABC"));
+        int[] ar = {1,3,2,1,8,6,3,4};
     }
 }

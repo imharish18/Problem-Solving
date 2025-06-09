@@ -1,4 +1,4 @@
-    class Stack{
+class Stack{
     int size;
     int top;
     int[] st;

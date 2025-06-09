@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Stack;
 public class Stack106 {
         public static void pushAt(int idx, int val, Stack<Integer> st){
         Stack<Integer> temp = new Stack<>();
