@@ -1,13 +1,13 @@
-class Node{
+class Node3{
     int val;
-    Node next;
-    Node(int val){
+    Node3 next;
+    Node3(int val){
         this.val = val;
     }
 }
 class Stack{
     int size=0;
-    Node head=null;
+    Node3 head=null;
     public boolean isEmpty(){
         if(head==null) return true;
         else return false;
@@ -16,7 +16,7 @@ class Stack{
         return size;
     }
     public void push(int val){
-        Node temp = new Node(val);
+        Node3 temp = new Node3(val);
         if(head==null) head=temp;
         else{
             temp.next = head;
@@ -35,14 +35,14 @@ class Stack{
         else return head.val;
     }
     public void display(){
-        Node temp = head;
+        Node3 temp = head;
         while(temp!=null){
             System.out.print(temp.val+" ");
             temp=temp.next;
         }
         System.out.println();
     }
-    public void displayRecursion(Node head){
+    public void displayRecursion(Node3 head){
         if(head==null) return;
         displayRecursion(head.next);
         System.out.print(head.val+" ");

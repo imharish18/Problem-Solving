@@ -1,18 +1,18 @@
 import java.util.*;
 
-class Node{
+class Node2{
     int val;
-    Node next;
+    Node2 next;
     public Object random;
 
-    Node(int val){
+    Node2(int val){
         this.val = val;
     }
 }
 
 class SLL{
-    Node head;
-    Node tail;
+    Node2 head;
+    Node2 tail;
     int sz=0;
 
     public void spiralMatrix(int m, int n) {
@@ -24,7 +24,7 @@ class SLL{
             System.out.println();
         }
 
-        Node traverse = head;
+        Node2 traverse = head;
 
         int minR = 0, minC = 0, maxR = arr.length-1, maxC = arr[0].length-1;
 
@@ -69,7 +69,7 @@ class SLL{
 
 
     public void insertAtStart(int val){
-        Node slow = new Node(val);
+        Node2 slow = new Node2(val);
         if(head==null) head = tail = slow;
         else{
             slow.next = head;
@@ -79,7 +79,7 @@ class SLL{
     }
 
     public void insertAtEnd(int val){
-        Node slow = new Node(val);
+        Node2 slow = new Node2(val);
         if(head==null) head = tail = slow;
         else{
             tail.next = slow;
@@ -89,7 +89,7 @@ class SLL{
     }
 
     public void insertAt(int idx, int val){
-        Node slow = new Node(val);
+        Node2 slow = new Node2(val);
         if(idx==0){
             insertAtStart(val);
             return;
@@ -102,7 +102,7 @@ class SLL{
             System.out.println("Invalid Index!!");
             return;
         }
-        Node x = head;
+        Node2 x = head;
         for(int i=1; i<idx; i++){
             x=x.next;
         }
@@ -112,7 +112,7 @@ class SLL{
     }
 
     public void display(){
-        Node slow = head;
+        Node2 slow = head;
 
         while(slow!=null){
             System.out.print(slow.val+" ");
@@ -129,7 +129,7 @@ class SLL{
         if(idx==0) return head.val;
         if(idx==sz-1) return tail.val;
 
-        Node slow = head;
+        Node2 slow = head;
         for(int i=0; i<idx; i++){
             slow = slow.next;
         }
@@ -144,7 +144,7 @@ class SLL{
         if(idx==0) head.val=val;
         if(idx==sz-1)tail.val = val;
 
-        Node slow = head;
+        Node2 slow = head;
         for(int i=0; i<idx; i++){
             slow = slow.next;
         }
@@ -166,7 +166,7 @@ class SLL{
             return;
         }
         
-        Node slow = head;
+        Node2 slow = head;
         for(int i=1; i<sz-1; i++){
             slow = slow.next;
         }
@@ -190,7 +190,7 @@ class SLL{
             return;
         }
 
-        Node slow = head;
+        Node2 slow = head;
         for(int i=1; i<idx; i++){
             slow = slow.next;
         }
@@ -206,9 +206,9 @@ class SLL{
     }
 
     public void findLeftMiddle() {
-        Node slow = head;
+        Node2 slow = head;
         if (head.next == null) return;
-        Node fast = head.next;
+        Node2 fast = head.next;
 
         while(fast!=null && fast.next!=null){
             slow = slow.next;
@@ -219,8 +219,8 @@ class SLL{
     }
     
     public void removeNthFromEnd(int k) {
-        Node i = head;
-        Node j = head;
+        Node2 i = head;
+        Node2 j = head;
         int len = 0;
         while(i!=null){
             len++;
@@ -239,7 +239,7 @@ class SLL{
     }
 
     public void deleteDuplicates() {
-        Node slow = head;
+        Node2 slow = head;
         while(slow.next!=null){
             if(slow.val==slow.next.val){
                 slow.next = slow.next.next;
@@ -249,19 +249,19 @@ class SLL{
     }
 }
 public class iamLL{
-    public static void displayW(Node head){
+    public static void displayW(Node2 head){
         
-        Node slow = head;
+        Node2 slow = head;
         while(slow!=null){
             System.out.print(slow.val+" ");
             slow=slow.next;
         }
         System.out.println();
     }
-    public static Node[] splitListToParts(Node head, int k) {
-        ArrayList<Node> arr = new ArrayList<>();
+    public static Node2[] splitListToParts(Node2 head, int k) {
+        ArrayList<Node2> arr = new ArrayList<>();
         int n = 0;
-        Node temp = head;
+        Node2 temp = head;
         while(temp!=null){
             temp = temp.next;
             n++;
@@ -277,7 +277,7 @@ public class iamLL{
             if(extra>0) s++;
             if(len==1) arr.add(temp);
             if(len==s){
-                Node a = temp.next;
+                Node2 a = temp.next;
                 temp.next=null;
                 temp=a;
                 len=1;
@@ -290,29 +290,29 @@ public class iamLL{
         for(int i=0; i<arr.size(); i++){
             displayW(arr.get(i));
         }
-    return arr.toArray(new Node[k]);
+    return arr.toArray(new Node2[k]);
     }
-    public static Node reverse(Node head){
+    public static Node2 reverse(Node2 head){
         if (head == null || head.next == null) return head; 
-        Node prev = null;
-        Node curr = head;
+        Node2 prev = null;
+        Node2 curr = head;
 
         while (curr != null) {
-            Node next = curr.next;
+            Node2 next = curr.next;
             curr.next = prev;
             prev = curr;        
             curr = next;          
         }
         return prev;
     }
-    public static void reverseKGroup(Node head, int k) {
+    public static void reverseKGroup(Node2 head, int k) {
         if(k==1) return;
-        Node dummy = new Node(-1);
+        Node2 dummy = new Node2(-1);
 
-        Node d = dummy;
-        Node back = head;
-        Node temp = head;
-        Node front = head;
+        Node2 d = dummy;
+        Node2 back = head;
+        Node2 temp = head;
+        Node2 front = head;
         int len = 1;
         while(front!=null){
             if(len<k){
@@ -335,8 +335,8 @@ public class iamLL{
     }
 
 
-    public static void nodesBetweenCriticalPoints(Node head) {
-        Node left = head, mid = head.next, right = head.next.next;
+    public static void nodesBetweenCriticalPoints(Node2 head) {
+        Node2 left = head, mid = head.next, right = head.next.next;
         int first = -1, last = -1, idx = 1;
         int minD=0;
         while(right!=null){
