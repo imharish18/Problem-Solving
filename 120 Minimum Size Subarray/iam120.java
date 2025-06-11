@@ -1,11 +1,10 @@
-import java.util.*;
 
-class power{
-    public static void negNo(int[] ar, int target) {
+ublic class iam120 {
+        public int minSubArrayLen(int target, int[] ar) {
         int n = ar.length;
         int i=0, j=0;
         int len = 0;
-        int maxLen = n;
+        int maxLen = n+1;
         int sum = 0;
         while(j<n){
             sum+=ar[j];
@@ -17,11 +16,6 @@ class power{
             }
             j++;
         }
-        System.out.println(maxLen);
-    }
-    public static void main(String[] args) {
-        int[] nums = {1,2,4,6,3,4,3};
-        negNo(nums, 7);
-
+        return maxLen==n+1 ? 0 : maxLen;
     }
 }
