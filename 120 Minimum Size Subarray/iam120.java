@@ -1,5 +1,5 @@
 
-ublic class iam120 {
+public class iam120 {
         public int minSubArrayLen(int target, int[] ar) {
         int n = ar.length;
         int i=0, j=0;
