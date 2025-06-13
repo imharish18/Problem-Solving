@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class iam128{
      public static String solver(String val1, String val2, char ch){
-        return val2+val1+ch;
+        return val1+val2+ch;
     }
 
     public static void main(String[] args) {
