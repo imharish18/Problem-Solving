@@ -1,7 +1,6 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Stack;
-class power{
+public class iam124 {
     public static int solver(int val1, int val2, char ch){
         if(ch=='+') return val1+val2;
         else if(ch=='-') return val1-val2;
