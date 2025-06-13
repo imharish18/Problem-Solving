@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
-class power{
+class iam125{
     public static int solver(int val1, int val2, char ch){
         if(ch=='+') return val1+val2;
         else if(ch=='-') return val1-val2;
