@@ -15,6 +15,7 @@ public class iam122 {
             }
             maxLen = Math.max(maxLen,len);
         }
+        System.out.println(i);
     return maxLen;
     }
 }
