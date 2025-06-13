@@ -16,7 +16,6 @@ public class iam121 {
                     j++;
                 }
             }
-            
         }
         maxLen = Math.max(maxLen,j-i);
     return maxLen;

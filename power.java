@@ -1,45 +1,46 @@
 import java.util.*;
+import java.util.Stack;
 
 class power{
-    public static void negNo(int[] ar, int k) {
+    public static void negNo2(int[] ar, int k) {
+        Stack<Integer> st = new Stack<>();
+
         int n = ar.length;
-        int i = k, j = k;
+        int ngi[] = new int[n];
+        ngi[n-1] = n-1;
+        st.push(n-1);
 
-        int p = 0;
-        int max = 0;
-
-        int[] ans = new int[n];
-
-        for(int x=1; x<k; x++){
-            if(ar[x]>ar[max]) max = x;
+        for(int i=n-2; i>=0; i--){
+            while(!st.isEmpty() && ar[i]>ar[st.peek()]) st.pop();
+            ngi[i] = st.isEmpty() ? i : st.peek();
+            st.push(i);
         }
-        for(int x=0; x<max; x++){
-            ans[p]=ar[max];
-            p++;
+        for(int nn : ngi){
+            System.out.print(ar[nn]+" ");
         }
+        System.out.println();
 
-        while(j<n){
-            if(ar[j]<ar[max]){
-                ans[p]=ar[max];
-                p++;
-                System.out.println(ar[j]+" and " +ar[max]);
-            }else{
-                System.out.println(ar[j]+" and " +ar[max]);
-                max=j;
-                ans[p] = ar[max];
-                p++;
+        int[] ans = new int[n-k+1];
+        for(int i=0; i<n-k+1; i++){
+
+            int max = ar[i];
+            int j=i;
+
+            while(j<i+k){
+                max = Math.max(max, ar[j]); 
+                if (ngi[j] == j) break; 
+                j = ngi[j]; 
             }
-            j++;
-            i++;
-        }
-        for(int a : ans){
-            System.out.print(a+" ");
+            ans[i]=max;
         }
 
+        for(int nn : ans){
+            System.out.print(nn+" ");
+        }
+        System.out.println();
     }
     public static void main(String[] args) {
         int[] nums = {1,3,-1,-3,5,3,6,7};
-        negNo(nums, 3);
-
+        negNo2(nums, 3);
     }
 }
