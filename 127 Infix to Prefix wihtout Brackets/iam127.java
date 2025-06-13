@@ -1,6 +1,6 @@
 import java.util.*;
 import java.util.Stack;
-public class power {
+public class iam127 {
     public static void main(String[] args) {
         Map<Character, Integer> priority = new HashMap<>();
         priority.put('+', 1);

@@ -1,6 +1,12 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
-public class power {
+
+public class iam126 {
+     public static String solver(String val1, String val2, char ch){
+        return ch+val1+val2;
+    }
+
     public static void main(String[] args) {
         Map<Character, Integer> priority = new HashMap<>();
         priority.put('+', 1);
@@ -17,14 +23,28 @@ public class power {
         for(int i=0; i<n; i++){
             if(Character.isDigit(s.charAt(i))) val.push((s.charAt(i)-48)+"");
             else{
-                if(op.isEmpty() || priority.get(s.charAt(i))>priority.get(op.peek())) op.push(s.charAt(i));  
+                if(op.isEmpty()) op.push(s.charAt(i));  
+                else if(s.charAt(i)=='(' || op.peek()=='(') op.push(s.charAt(i));
+                else if(s.charAt(i)==')'){
+                    while(op.peek()!='('){
+                        String val2 = val.pop();
+                        String val1 = val.pop();
+                        char ch = op.pop();
+                        String ans = solver(val1,val2,ch);
+                        val.push(ans);
+
+                    }
+                    op.pop();
+                }
+                else if(priority.get(s.charAt(i))>priority.get(op.peek())) op.push(s.charAt(i));
                 else{
                     while(!op.isEmpty() && priority.get(s.charAt(i))<=priority.get(op.peek())){
                         String val2 = val.pop();
                         String val1 = val.pop();
                         char ch = op.pop();
-                        String ans = ch+val1+val2;
+                        String ans = solver(val1,val2,ch);
                         val.push(ans);
+
                     }
                     op.push(s.charAt(i));
                 }
@@ -36,9 +56,8 @@ public class power {
             String val2 = val.pop();
             String val1 = val.pop();
             char ch = op.pop();
-            String ans = ch+val1+val2;
+            String ans = solver(val1,val2,ch);
             val.push(ans);
-
         }
         System.out.println(val);
         System.out.println(op);
