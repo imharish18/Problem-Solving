@@ -1,3 +1,8 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 class Qnode{
     int val;
@@ -85,8 +90,6 @@ class deque{
     }
     
 }
-
-
 class cqa{
     int front = -1;
     int rear = -1;
@@ -150,26 +153,76 @@ class cqa{
         }
     }
 }
+
+
+
 public class power {
-     public static void main(String[] args) {
-        cqa q = new cqa(5);
-        q.display();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.add(5);
-        System.out.println(q.size);
-        q.remove();
-        q.remove();
-        q.remove();
-        q.add(6);
-        q.add(7);
-        q.add(8);
+    public static void reverseQueue(Queue q, int k){
+        Stack<Integer> st = new Stack<>();
+        for(int i=0; i<k; i++) st.push((int)q.remove());
+        while(!st.isEmpty()) q.add(st.pop());
+        for(int i=0; i<q.size()-k; i++)  q.add(q.remove());
+    }
+    public static int countStudents(int[] st, int[] sd) {
+        Queue q = new ArrayDeque();
+        for(int a : st) q.add(a);
+        int i=0;
+        int count=0;
+        while(!q.isEmpty() && count!=q.size()){
+            if((int)q.peek()==sd[i]){
+                count=0;
+                q.remove();
+                i++;
+            }else{
+                q.add(q.remove());
+                count++;
+            }
+        }
+        return q.size();
+    }
+    public static void firstNegative(int[] ar, int k){
+        Queue q = new ArrayDeque<>();
+        int n = ar.length;
+        int[] ans = new int[n-k+1];
 
-        
-        
-        q.display();
+        for(int i=0; i<n; i++){
+            if(ar[i]<0) q.add(i);
+        }
+        int i=0;
+        while(i+k<=n){
+            while(!q.isEmpty() && i>(int)q.peek()) q.remove();
+            if(q.isEmpty() || (int)q.peek()>=i+k)ans[i]=0;
+            else ans[i] = ar[(int)q.peek()];
+            i++;
+        }
+        for(int l:ans){
+            System.out.print(l+" ");
+        }
+    }
+    
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        if(k==1) return nums;
+        Deque dq = new ArrayDeque<>();
+        int n = nums.length;
+        int idx=0;
+        int[] ans  = new int[n-k+1];
+        for(int i=0; i<n; i++){
+            while(!dq.isEmpty() && nums[i]>nums[(int)dq.peekLast()]) dq.removeLast();
+            dq.addLast(i);
+            while((i-k+1)>(int)dq.peekFirst()) dq.removeFirst();
+            if(i>=k-1) ans[idx++]=nums[(int)dq.peek()];
+        }
 
+        System.out.println(dq);
+        for(int x: ans){
+            System.out.print(x+" ");
+        }
+        return ans;
+    }
+    
+    public static void main(String[] args) {
+        int[] nums = {1,3,-1,-3,5,3,6,7};
+        int k = 3;
+        maxSlidingWindow(nums, k);
     }
 }
