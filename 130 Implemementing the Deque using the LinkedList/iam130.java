@@ -1,18 +1,16 @@
-import java.util.*;
-import java.util.Stack;
-class Qnode{
+class iam130{
     int val;
-    Qnode next;
-    Qnode prev;
-    Qnode(int val){
+    iam130 next;
+    iam130 prev;
+    iam130(int val){
         this.val=val;
         this.next = null;
         this.prev = null;
     }
 }
 class deque{
-    Qnode front;
-    Qnode rear;
+    iam130 front;
+    iam130 rear;
     int size;
 
     deque(){
@@ -27,7 +25,7 @@ class deque{
         return size;
     }
     public void insertAtFront(int val){
-        Qnode newNode = new Qnode(val);
+        iam130 newNode = new iam130(val);
         if(front==null){
             rear=newNode;
             front=newNode;
@@ -40,7 +38,7 @@ class deque{
         size++;
     }
     void insertAtRear(int val){
-        Qnode newNode = new Qnode(val);
+        iam130 newNode = new iam130(val);
         if(rear==null){
             rear=front=newNode;
         }else{
@@ -77,7 +75,7 @@ class deque{
         else return rear.val;
     }
     void display(){
-        Qnode temp = front;
+        iam130 temp = front;
         while(temp!=null){
             System.out.print(temp.val+" ");
             temp=temp.next;
@@ -86,23 +84,4 @@ class deque{
     }
     
 }
-public class power {
 
-     public static void main(String[] args) {
-        deque dq = new deque();
-        dq.insertAtFront(5);
-        dq.insertAtFront(15);
-        dq.insertAtFront(25);
-        dq.insertAtRear(45);
-        dq.insertAtRear(145);
-
-
-        dq.display();
-        dq.deleteFront();
-        // dq.deleteRear();
-
-
-        dq.display();
-
-    }
-}
