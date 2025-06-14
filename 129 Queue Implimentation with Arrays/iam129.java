@@ -1,13 +1,10 @@
-import java.util.*;
-import java.util.Stack;
-public class power {
 
-    public static class que{
+public class iam129 {
         int f = -1;
         int r = -1;
         int size;
         int[] ar;
-        que(int size){
+        iam129(int size){
             ar = new int[size];
         }
         public boolean isFull(){
@@ -53,24 +50,4 @@ public class power {
                 System.out.println();
             }
         }
-    }
-     public static void main(String[] args) {
-        que q = new que(5);
-        q.add(5);
-        q.add(4);
-        q.add(3);
-        q.add(2);
-        q.add(1);
-        q.display();
-        q.add(7);
-        q.remove();
-        q.add(7);
-
-
-
-
-        q.display();
-        System.out.println(q.size);
-
-    }
 }
