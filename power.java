@@ -1,7 +1,10 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 import java.util.Stack;
 
 class Qnode{
@@ -198,8 +201,7 @@ public class power {
         for(int l:ans){
             System.out.print(l+" ");
         }
-    }
-    
+    }  
     public static int[] maxSlidingWindow(int[] nums, int k) {
         if(k==1) return nums;
         Deque dq = new ArrayDeque<>();
@@ -219,10 +221,72 @@ public class power {
         }
         return ans;
     }
-    
+    public static String predictPartyVictory(String s){
+        StringBuilder sb = new StringBuilder(s);
+        Queue q = new ArrayDeque<>();
+        Queue r = new ArrayDeque<>();
+        Queue d = new ArrayDeque<>();
+
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)=='R') r.add(i);
+            if(s.charAt(i)=='D') d.add(i);
+            q.add(i);
+        }
+        int i=0;
+        while(q.size()>1){
+            if(sb.charAt((int)q.peek())=='X') q.remove();
+            else if(sb.charAt((int)q.peek())=='R'){
+                if(d.isEmpty()) return "Radiant";
+                else{
+                    sb.setCharAt((int)d.peek(),'X');
+                    d.remove();
+                    q.add(q.remove());
+                    r.add(r.remove());
+                }
+
+            }else{
+                if(r.isEmpty()) return "Dire";
+                else{
+                    sb.setCharAt((int)r.peek(),'X');
+                    r.remove();
+                    q.add(q.remove());
+                    d.add(d.remove());
+                }
+
+            }
+        }
+        if(sb.charAt((int)q.remove())=='R')return "Radiant";
+        return "Dire";
+    }
+
+    public static String reverseWords(String s) {
+        int n = s.length();
+        String ans="";
+        
+        int i=0; 
+        while(i<n){
+            StringBuilder sb = new StringBuilder();
+            while(i<n && s.charAt(i)!=' ') sb.append(s.charAt(i++));
+            while(i<n && s.charAt(i)==' ') i++;
+            ans=sb+" "+ans;
+        }
+        i=1;
+        while(ans.charAt(ans.length()-i)==' ') i++;
+        if(ans.charAt(ans.length()-1)==' ') return ans.substring(0, ans.length()-i+1);
+        return ans;  
+    }
     public static void main(String[] args) {
-        int[] nums = {1,3,-1,-3,5,3,6,7};
-        int k = 3;
-        maxSlidingWindow(nums, k);
+        int[] ar = {2,3,4,7,11,13,17};
+        
+        int n = ar.length;
+        int[] ans = new int[n];
+        Queue q = new ArrayDeque<>();
+        for(int i=0; i<n; i++)q.add(i);
+        System.out.println(q);
+        for(int i=0; i<n; i++) {
+        ans[(int)q.remove()]=ar[i];
+        if(!q.isEmpty())q.add(q.remove());
+        }
+
     }
 }
