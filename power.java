@@ -17,6 +17,12 @@ public class power {
         display(root.left);
         display(root.right);
     }
+    public static int summ(TreeNode root){
+        int sum=0;
+        if(root==null) return 0;
+        sum+=root.val+summ(root.left)+summ(root.right);
+        return sum;
+    }
     public static void main(String[] args) {
         TreeNode a = new TreeNode(1);
         TreeNode b = new TreeNode(4); 
@@ -24,11 +30,11 @@ public class power {
         TreeNode d = new TreeNode(2);
         TreeNode e = new TreeNode(6);
         TreeNode f = new TreeNode(5);
-        TreeNode g = new TreeNode(0);
+        TreeNode g = new TreeNode(1);
 
         a.left=b; a.right = c;
         b.left = d; b.right=e;
         c.right=f; c.left=g;
-        display(a);
+        System.out.println(summ(a));
     }
 }
