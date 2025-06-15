@@ -5,4 +5,8 @@ public class iam135 {
         sum+=root.val+summ(root.left)+summ(root.right);
         return sum;
     }
+    public static int summ2(TreeNode root){
+        if(root==null) return 0;
+        return root.val+summ(root.left)+summ(root.right);
+    }
 }
