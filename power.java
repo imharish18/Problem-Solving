@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 class TreeNode{
     int val;
@@ -11,53 +12,37 @@ class TreeNode{
 }
 
 public class power {
-    public static void display(TreeNode root){
+    public static void preOrderTraversal(TreeNode root){
         if(root==null) return;
         System.out.print(root.val+" ");
-        display(root.left);
-        display(root.right);
+        preOrderTraversal(root.left);
+        preOrderTraversal(root.right);
     }
-    public static int summ(TreeNode root){
-        if(root==null) return 0;
-        return root.val+summ(root.left)+summ(root.right);
+    public static void inOrderTraversal(TreeNode root){
+        if(root==null) return;
+        inOrderTraversal(root.left);
+        System.out.print(root.val+" ");
+        inOrderTraversal(root.right);
     }
-    public static int product(TreeNode root){
-        if(root==null) return 1;
-        return (root.val==0?1:root.val)*product(root.left)*product(root.right);
-    }
-    public static int max(TreeNode root){
-        if(root == null) return Integer.MIN_VALUE;
-        return Math.max(root.val, Math.max(max(root.left), max(root.right)));
-    }
-    public static int min(TreeNode root){
-        if(root == null) return Integer.MAX_VALUE;
-        return Math.min(root.val, Math.min(min(root.left), min(root.right)));
-    }
-    public static int sizee(TreeNode root){
-        if(root == null) return 0;
-        return 1+sizee(root.left) + sizee(root.right);
-    }
-    public static int levels(TreeNode root){
-        if(root == null) return 0;
-        return 1+Math.max(levels(root.left),levels(root.right));
-    }
-    public static int height(TreeNode root){
-        return levels(root)-1;
+    public static void postOrderTraversal(TreeNode root){
+        if(root==null) return;
+        postOrderTraversal(root.left);
+        postOrderTraversal(root.right);
+        System.out.print(root.val+" ");
+        
     }
 
     public static void main(String[] args) {
-        TreeNode a = new TreeNode(1);
-        TreeNode b = new TreeNode(4); 
-        TreeNode c = new TreeNode(3);
-        TreeNode d = new TreeNode(2);
-        TreeNode e = new TreeNode(2);
-        TreeNode f = new TreeNode(5);
-        TreeNode g = new TreeNode(0);
-
-
+        TreeNode a = new TreeNode(4);
+        TreeNode b = new TreeNode(2); 
+        TreeNode c = new TreeNode(7);
+        TreeNode d = new TreeNode(1);
+        TreeNode e = new TreeNode(3);
+        TreeNode f = new TreeNode(6);
+        TreeNode g = new TreeNode(9);
         a.left=b; a.right = c;
         b.left = d; b.right=e;
-        c.right=f; c.left=g;
-        System.out.println(height(a));
+        c.left=f; c.right=g;
+
     }
 }
