@@ -32,6 +32,7 @@ public class power {
         
     }
 
+    
     public static void main(String[] args) {
         TreeNode a = new TreeNode(4);
         TreeNode b = new TreeNode(2); 
