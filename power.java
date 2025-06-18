@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.List;
 import java.util.Queue;
@@ -61,6 +62,34 @@ public class power {
     }
 
 
+    public static String simplifyPath(String path) {
+        Stack<String> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        String[] parts = path.split("/");
+        for(String s : parts){
+            if(s.equals("") || s.equals(".")) continue;
+            else if(s.equals("..")){
+                if(!st.isEmpty()) st.pop();
+            }
+            else st.push(s);
+        }
+            while (!st.isEmpty()) {
+        sb.insert(0, "/" + st.pop());
+    }
+        System.out.println(sb);
+        return sb.reverse().toString();
+    }
+
+    public static int level(TreeNode root){
+        if(root==null) return 0;
+        return 1 + Math.max(level(root.left),level(root.right));
+    }
+    public static void dfs(TreeNode root, int level, List<Integer> al){
+        if(root==null) return;
+        al.set(level,root.val);
+        dfs(root.left,level+1,al);
+        dfs(root.right,level+1,al);
+    }
     public static void main(String[] args) {
         TreeNode a = new TreeNode(1);
         TreeNode b = new TreeNode(2); 
@@ -72,12 +101,8 @@ public class power {
         a.left=b; a.right = c;
         b.left = d; b.right=e;
         c.left=f; c.right=g;
-
-        preOrderTraversal(a);
-        System.out.println();
-        postOrderTraversal(a);
-        System.out.println();
-        inOrderTraversal(a);
-
+        ArrayList<Integer> al = new ArrayList<>();
+        dfs(a,0,al);
+        System.out.println(al);
     }
 }
