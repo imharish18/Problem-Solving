@@ -32,5 +32,31 @@ public class iam155 {
     //     if(root.right!=null && rightValue<=root.val) return false;
     //     return isValidBST(root.left) && isValidBST(root.right);
     // }
+
+        // My method TWO :)
+    static boolean flag;
+    public long getMinimum(TreeNode root) {
+        if(flag==false) return 0;
+        if (root == null) return Long.MAX_VALUE;
+        long leftMin = getMinimum(root.left);
+        long rightMin = getMinimum(root.right);
+        if(rightMin<=root.val) flag = false;
+        return Math.min(root.val, Math.min(leftMin, rightMin));
+    }
+    public long getMaximum(TreeNode root) {
+        if(flag==false) return 0;
+        if (root == null) return Long.MIN_VALUE;
+        long leftMax = getMaximum(root.left);
+        if(leftMax>=root.val) flag = false;
+        long rightMax = getMaximum(root.right);
+        return Math.max(root.val, Math.max(leftMax, rightMax));
+    }
+ 
+    public boolean isValidBST2(TreeNode root) {
+        flag =true;
+        getMaximum(root);
+        getMinimum(root);
+        return flag;
+    }
 }
 }
