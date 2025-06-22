@@ -1,6 +1,9 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Stack;
+
+import javax.swing.event.InternalFrameAdapter;
+
 import java.util.List;
 import java.util.Queue;
 
@@ -16,34 +19,35 @@ class TreeNode{
 }
 
 public class power {
+    static int i=0;
+    public static void inorder(TreeNode root, int[] ar){
+        if(root==null) return;
+        inorder(root.left,ar);
+        ar[i++] = root.val;
+        inorder(root.right,ar);
+    }
+
+    public static int helper(int[] ar, int key, int lo, int hi){
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (ar[mid] == key) return mid;
+            if (ar[mid] > key) hi = mid - 1;
+            else lo = mid + 1;
+        }
+        return -1;
+    }
     public static void main(String[] args) {
-        
-        ArrayList<Integer> al = new ArrayList<>();
-        al.add(0);
-        al.add(1);
-        al.add(2);
-        al.add(3);
-        al.add(4);
-        al.add(5);
-        al.add(6);
-        al.add(7);
-        al.add(8);
+        TreeNode root = new TreeNode(50);
+        TreeNode a = new TreeNode(30);
+        TreeNode b = new TreeNode(70);
+        TreeNode c = new TreeNode(20);
+        TreeNode d = new TreeNode(40);
+        TreeNode e = new TreeNode(60);
+        TreeNode f = new TreeNode(80);
+        root.left = a; root.right=b;
+        a.left=c;a.right=d;
+        b.left=e;b.right=f;
 
-        ArrayList<Integer> pre = new ArrayList<>(al);
-        for(int i=1; i<al.size(); i++){
-            al.set(i,al.get(i-1)+al.get(i));
-        }
-        for(int i=al.size()-2; i>=0; i--){
-            pre.set(i,pre.get(i+1)+pre.get(i));
-        }
-
-        System.out.println(pre);
-        System.out.println(al.remove(0));
-        System.out.println(pre);
-        System.out.println(pre);
-        System.out.println(pre);
-        System.out.println(pre);
-        System.out.println(pre);
-        System.out.println(pre);
+        inPred
     }
 }
