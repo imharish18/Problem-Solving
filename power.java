@@ -109,6 +109,35 @@ public class power {
             }
         }
     }
+    public static void kthSmallMorris(TreeNode root, int k){
+        int iterator = 0;
+        TreeNode curr = root;
+        while(curr!=null){
+            if(curr.left!=null){
+                TreeNode p = curr.left;
+                while(p.right!=null && p.right!=curr) p=p.right;
+                if(p.right==null){
+                    p.right=curr;
+                    curr=curr.left;
+                }else{
+                    if(iterator==k){
+                        System.out.println(curr.val);
+                        return;
+                    }
+                    iterator++;
+                    curr=curr.right;
+                    p.right=null;
+                }
+            }else{
+                if(iterator==k){
+                    System.out.println(curr.val);
+                    return;
+                }
+                iterator++;
+                curr=curr.right;
+            }
+        }
+    }
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);
         TreeNode a = new TreeNode(2);
@@ -123,7 +152,7 @@ public class power {
         a.left=c;a.right=d; d.left=d2;
         b.left=e;b.right=f; e.right=e2;
 
-        predi(root);
+        kthSmallMorris(root,6);
 
     }
 }
