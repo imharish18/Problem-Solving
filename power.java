@@ -2,27 +2,23 @@ import java.util.*;
 
 public class power {
 
-    public static boolean canArrange(int[] ar, int k){
+    public static int maxOperations(int[] nums, int k) {
+        int count = 0;
+
         HashMap<Integer,Integer> map = new HashMap<>();
-        for(int x : ar){
-            int rem = x%k;
-            if(rem<0) rem+=k;
+        for(int x : nums){
             map.put(x,map.getOrDefault(x,0)+1);
         }
-        if(map.containsKey(0)){
-            if(map.get(0)%2!=0) return false;
-            map.remove(0);
+        for(int x : map.keySet()){
+            if(map.get(x)==1) map.remove(x);
+            else map.put(x,map.getOrDefault(x,0)-1);
+            if(map.containsKey(k-x) && map.get(k-x)>0){
+                count++;
+            map.put(x,map.getOrDefault(x,0)-1);
+            }
         }
-        for(int key : map.keySet()){
-            int rem = k - key;
-            if(!map.containsKey(rem)) return false;
-            int keyFreq = map.get(key);
-            int remFreq = map.get(rem);
-            if(keyFreq!=remFreq) return false;
-        }
-        return true;
+        return count;
     }
-
     public static void main(String[] args) {
     }
 }

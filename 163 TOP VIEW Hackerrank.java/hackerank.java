@@ -2,6 +2,8 @@ import java.util.*;
 import java.io.*;
 
 class Node {
+    public static final int val = 0;
+    public static Node next = null;
     Node left;
     Node right;
     int data;
