@@ -26,6 +26,7 @@ public class iam165 {
         }
         for(Nodee22 ori : map.keySet()){
             Nodee22 dup = map.get(ori);
+            System.out.println(dup);
            // if(ori.random!=null) dup.random = map.get(ori.random);
         }
         return ans;
