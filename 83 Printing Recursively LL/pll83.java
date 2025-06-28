@@ -1,4 +1,6 @@
 class Node{
+    public static final String left = null;
+    public static final String right = null;
     int val;
     Node next;
 
