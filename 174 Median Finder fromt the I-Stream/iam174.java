@@ -26,8 +26,4 @@ class MedianFinder {
         return (maxHeap.peek()+minHeap.peek())/2.0;
     }
 }
-public class power {
-    public static void main(String[] args) {
 
-    }
-}
