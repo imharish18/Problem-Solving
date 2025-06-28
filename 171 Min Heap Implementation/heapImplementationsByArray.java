@@ -17,6 +17,18 @@ class minHeap{
             upheapify(p);
         }
     }
+    public void downHeapify(int idx){
+        if(idx==size-1) return;
+        int lc = 2*idx+1, rc = 2*idx+2;
+        if(lc>=size) return;
+        int minIdx = idx;
+        if(lc<size && ar[lc]<ar[minIdx]) minIdx = lc;
+        if(rc<size && ar[rc]<ar[minIdx]) minIdx = rc;
+        if(idx==minIdx) return;
+        swap(idx,minIdx);
+        downHeapify(minIdx);
+        
+    }
     public void add(int num){
         ar[size] = num;
         upheapify(size);
@@ -32,6 +44,13 @@ class minHeap{
         }
         return ar[0];
     }
+    public int remove(){
+        int peek = ar[0];
+        swap(0, size-1);
+        size--;
+        downHeapify(0);
+        return peek;
+    }
     
 }
 public class heapImplementationsByArray {
@@ -42,6 +61,8 @@ public class heapImplementationsByArray {
         pq.add(6);
         pq.add(4);
         pq.add(2);
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
         System.out.println(pq.peek());
     }
 }

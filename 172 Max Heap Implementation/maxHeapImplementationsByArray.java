@@ -1,0 +1,73 @@
+class maxHeap{
+    int size;
+    int[] ar;
+    maxHeap(int capacity){
+        ar = new int[capacity];
+    }
+    public void swap(int p, int i){
+        int temp = ar[i];
+        ar[i]=ar[p];
+        ar[p]=temp;
+    }
+    public void upheapify(int idx) {
+        if (idx == 0) return;
+        int p = (idx - 1) / 2;
+        if (ar[p] < ar[idx]) { 
+            swap(p, idx);
+            upheapify(p);
+        }
+    }
+
+    public void downHeapify(int idx){
+        if(idx==size-1) return;
+        int lc = 2*idx+1, rc = 2*idx+2;
+        if(lc>=size) return;
+        int minIdx = idx;
+        if(lc<size && ar[lc]>ar[minIdx]) minIdx = lc;
+        if(rc<size && ar[rc]>ar[minIdx]) minIdx = rc;
+        if(idx==minIdx) return;
+        swap(idx,minIdx);
+        downHeapify(minIdx);
+        
+    }
+    public void add(int num){
+        ar[size] = num;
+        upheapify(size);
+        size++;
+    }
+    public int size(){
+        return size;
+    }
+    public int peek(){
+        if(size==0){
+        System.out.println("Heap is EMPTY");
+        return -1;
+        }
+        return ar[0];
+    }
+    public int remove(){
+        int peek = ar[0];
+        swap(0, size-1);
+        size--;
+        downHeapify(0);
+        return peek;
+    }
+    
+}
+public class maxHeapImplementationsByArray {
+    public static void main(String[] args) {
+        maxHeap pq2 = new maxHeap(6);
+        pq2.add(5);
+        pq2.add(6);
+        pq2.add(4);
+        pq2.add(0);
+        pq2.add(7);
+        pq2.add(2);
+        System.out.println(pq2.remove());
+        System.out.println(pq2.remove());
+        System.out.println(pq2.remove());
+        System.out.println(pq2.remove());
+        System.out.println(pq2.remove());
+        System.out.println(pq2.peek());
+    }
+}
