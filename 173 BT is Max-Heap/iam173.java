@@ -1,15 +1,5 @@
-import java.util.*;
-class Node{
-    int val;
-    Node left;
-    Node right;
-    public Node(int val){
-        this.val = val;
-    }
-}
-public class power {
-
-    public boolean isHeap(Node root){
+public class iam173 {
+        public boolean isHeap(Node root){
         if(root==null) return true;
         if(root.left!=null){
             if(root.val<root.left.val) return false;
@@ -23,12 +13,5 @@ public class power {
         if(root==null) return true;
         if(i>=n) return false;
         return isCBT(root.left, 2*i+1, n) && isCBT(root.right, i*2+2, n);
-    }
-
-    public boolean isMaxHeap(Node root){
-        return isHeap(root) && isCBT(root,0,5);
-    }
-    public static void main(String[] args) {
-
     }
 }
